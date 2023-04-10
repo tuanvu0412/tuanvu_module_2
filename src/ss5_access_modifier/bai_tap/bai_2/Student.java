@@ -7,7 +7,7 @@ public class Student {
     public Student() {
     }
 
-    public void setName() {
+    public void setName(String name) {
         this.name = name;
     }
 
