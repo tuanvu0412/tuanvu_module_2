@@ -14,22 +14,26 @@ public class Cylinder extends Circle {
         super(radius, color);
         this.height = height;
     }
-    public Cylinder(){
+
+    public Cylinder() {
         super();
     }
-    public double getHeight(){
+
+    public double getHeight() {
         return height;
     }
-    public void setHeight(){
+
+    public void setHeight() {
         this.height = height;
 
     }
-    public  double getTotalArea(){
+
+    public double getTotalArea() {
         return super.getArea() * this.height;
     }
 
     @Override
     public String toString() {
-        return getTotalArea()+"";
+        return getTotalArea() + "";
     }
 }
