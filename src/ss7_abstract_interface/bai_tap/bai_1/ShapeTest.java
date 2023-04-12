@@ -9,9 +9,18 @@ public class ShapeTest extends Shape {
         shape[0] = circle;
         shape[1] = retangle;
         shape[2] = square;
-        for (int i = 0; i < shape.length; i++) {
-            System.out.println(shape[i].toString());
-            shape[i].resize(Math.random() * 100);
+        System.out.println("befor to change : ");
+        for (Shape s: shape) {
+            System.out.println(s);
         }
+        for (int i = 0; i < shape.length; i++) {
+          shape[i].resize(Math.random() * 100);
+        }
+        System.out.println("After to change : ");
+        for (Shape s: shape) {
+            System.out.println(s);
+        }
+
     }
+
 }

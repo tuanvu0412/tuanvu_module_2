@@ -29,13 +29,13 @@ public class Square extends Shape implements IResizeable {
 
     @Override
     public String toString() {
-        return "Square{" +
+        return "Square{Area" + getArea()+
                 "size= " + size + super.toString() +
                 '}';
     }
 
     public void resize(double percent) {
-        System.out.println(size + size * percent / 100);
+        setSize(size + size * percent / 100);
 
     }
 }

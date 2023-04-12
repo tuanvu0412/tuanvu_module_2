@@ -31,8 +31,8 @@ public class Retangle extends Shape implements IResizeable {
         return length;
     }
 
-    public void setHeight(double height) {
-        this.length = height;
+    public void setLength(double Length) {
+        this.length = Length;
     }
 
     public double getArea() {
@@ -45,15 +45,15 @@ public class Retangle extends Shape implements IResizeable {
 
     @Override
     public String toString() {
-        return "Retangle{" +
-                "width=" + getWidth() +
-                ", height=" + getLength() + super.toString() +
+        return "Retangle{Area" + getArea()+
+                "width = " + getWidth() +
+                ", height = " + getLength() + super.toString() +
                 '}';
     }
 
     @Override
     public void resize(double percent) {
-        System.out.println(width + width * percent / 100);
-        System.out.println(length + length * percent / 100);
+        setWidth(width + width * percent / 100);
+        setLength( + length * percent / 100);
     }
 }

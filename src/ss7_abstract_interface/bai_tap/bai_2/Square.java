@@ -30,6 +30,6 @@ public class Square extends Shape implements IColorable {
 
     @Override
     public void hơwToColor() {
-        System.out.println("color all four side");
+        System.out.println(getColor()+"color all four side");
     }
 }
