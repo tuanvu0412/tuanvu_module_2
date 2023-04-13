@@ -15,23 +15,26 @@ public class MyList<E> {
     public MyList(int size) {
         element = (E[]) new Object[size];
     }
+
     public Boolean add(E o, int index) {
         if (index >= 0 && index <= size) {
             size++;
             for (int i = size - 1; i > index; i--) {
-                element[i+1]= element[i];
+                element[i + 1] = element[i];
             }
-            element[index]= o;
+            element[index] = o;
             return true;
         }
-    return false;
+        return false;
     }
-    public E get(int i ){
-        if(i >=size || i <0){
-            throw  new IndexOutOfBoundsException("index: "+i+", Size"+i);
+
+    public E get(int i) {
+        if (i >= size || i < 0) {
+            throw new IndexOutOfBoundsException("index: " + i + ", Size" + i);
         }
         return (E) element[i];
     }
+
     public Object remove(int index) {
         if (index >= 0 && index < size) {
             for (int i = index; i < size; i++) {
@@ -39,7 +42,7 @@ public class MyList<E> {
             }
             size -= 1;
         }
-        return (E)element[index];
+        return (E) element[index];
     }
 
     @Override
@@ -49,5 +52,4 @@ public class MyList<E> {
                 ", element=" + Arrays.toString(element) +
                 '}';
     }
-
 }
