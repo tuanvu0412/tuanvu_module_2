@@ -15,17 +15,9 @@ public class MyList<E> {
     public MyList(int size) {
         element = (E[]) new Object[size];
     }
-    public void capacity() {
-        if (size > element.length) {
-            int bigSize = size * 2;
-            element = Arrays.copyOf(element, bigSize);
-        }
-    }
-
     public Boolean add(E o, int index) {
         if (index >= 0 && index <= size) {
             size++;
-            capacity();
             for (int i = size - 1; i > index; i--) {
                 element[i+1]= element[i];
             }

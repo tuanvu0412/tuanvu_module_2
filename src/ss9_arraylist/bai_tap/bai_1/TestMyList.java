@@ -4,7 +4,7 @@ import ss9_arraylist.bai_tap.bai_1.MyList;
 
 public class TestMyList {
     public static void main(String[] args) {
-        MyList<String> list = new MyList<String>();
+        MyList<String> list = new MyList<>();
         list.add("one ", 0);
         list.add("true", 1);
         list.add("three", 2);

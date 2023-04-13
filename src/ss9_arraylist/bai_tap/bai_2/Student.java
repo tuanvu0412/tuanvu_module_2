@@ -1,16 +1,17 @@
-package ss9_arraylist.bai_tap.bai_2.model;
+package ss9_arraylist.bai_tap.bai_2;
 
 public class ModelStudent extends Person {
     private String className;
-    private double point = 0.0;
+    private int point ;
 
     public ModelStudent() {
 
     }
-    public ModelStudent(int id, String name, double date, boolean male, String className, double score) {
+
+    public ModelStudent(int id, String name, int date, String male, String className, int point) {
         super(id, name, date, male);
         this.className = className;
-        this.point = score;
+        this.point= point;
     }
 
     public String getClassName() {
@@ -21,11 +22,11 @@ public class ModelStudent extends Person {
         this.className = className;
     }
 
-    public double getPoint() {
+    public int getPoint() {
         return point;
     }
 
-    public void setPoint(double point) {
+    public void setPoint(int point) {
         this.point = point;
     }
 
