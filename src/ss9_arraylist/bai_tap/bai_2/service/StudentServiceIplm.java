@@ -12,7 +12,7 @@ public class StudentServiceIplm implements IStudentService {
 
     @Override
     public void addStudentList() {
-        studentList.displayStudentList();
+        studentList.getStudentList();
         System.out.println("nhập mã");
         String code = sc.nextLine();
         System.out.println("nhập tên");
@@ -31,12 +31,19 @@ public class StudentServiceIplm implements IStudentService {
 
     @Override
     public void deteleStudent() {
-        studentList.displayStudentList();
+        studentList.getStudentList();
+        System.out.println("nhập id hoc viên mà bạn muốn xóa");
+        int id1 = Integer.parseInt(sc.nextLine());
+        boolean delete = studentList.deleteStudent(id1);
+        if (delete) {
+            System.out.println("bạn đã xóa thành công");
+        } else {
+            System.out.println("không tìm thấy id ");
+        }
     }
 
     public void displayStudent() {
-
-        studentList.displayStudentList();
+        studentList.getStudentList();
     }
 
 }

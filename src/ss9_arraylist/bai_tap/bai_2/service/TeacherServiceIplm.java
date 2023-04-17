@@ -39,7 +39,7 @@ public class TeacherServiceIplm implements ITeacherService {
 
     @Override
     public void displayTeacher() {
-        teacherRepository.displayTeacherList();
+        teacherRepository.getTeacherList();
     }
 
 
