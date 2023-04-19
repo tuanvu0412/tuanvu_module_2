@@ -49,9 +49,9 @@ public class ComputerRepositoryIplm implements IComputerIplm {
 
     @Override
     public boolean findComputer(String name) {
-        for (int i = 0; i < computers.size(); i++) {
-            if (name.equals(computers.get(i).getName())) {
-                System.out.println(computers.get(i));
+        for (Computer computer : computers) {
+            if (name.equals(computer.getName())) {
+                System.out.println(computer);
                 return true;
             }
         }
