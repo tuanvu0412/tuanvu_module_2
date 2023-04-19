@@ -15,7 +15,7 @@ public class InsertionSortByStep {
         }
         System.out.println("các phần tử trong mảng là : ");
         for (int j : array) {
-            System.out.println(j+"");
+            System.out.println(j + "");
         }
         System.out.println("bắt đầu sắp xếp...");
         insertionSortByStep(array);
