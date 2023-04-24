@@ -6,8 +6,8 @@ import java.util.List;
 
 public class CopyFileText {
     public static void main(String[] args) {
-        String PATH1 = "src/ss15_read_write_file/bai_tap/copy_file_text/Source_File";
-        File file1 = new File(PATH1);
+        String PATH1_SOURCE_FILE = "src/ss15_read_write_file/bai_tap/copy_file_text/Source_File";
+        File file1 = new File(PATH1_SOURCE_FILE);
         FileWriter fileWriter;
         BufferedWriter bufferedWriter;
         FileReader fileReader = null;
@@ -46,8 +46,8 @@ public class CopyFileText {
                 e.printStackTrace();
             }
         }
-        String PATH = "src/ss15_read_write_file/bai_tap/copy_file_text/Target_file";
-        File file = new File(PATH);
+        String PATH_TAGET_FILE = "src/ss15_read_write_file/bai_tap/copy_file_text/Target_file";
+        File file = new File(PATH_TAGET_FILE);
         FileWriter fileWriter1 = null;
         BufferedWriter bufferedWriter1 = null;
         int count = 0;
