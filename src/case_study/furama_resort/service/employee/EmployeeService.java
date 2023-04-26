@@ -79,7 +79,7 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (flag);
         System.out.println("nhập chức vụ");
-        String position = sc.nextLine();
+        String position = null;
         do {
             System.out.println("---Chức Vụ Nhân Viên---\n" +
                     "1. Lễ Tân\n" +
@@ -90,7 +90,7 @@ public class EmployeeService implements IEmployeeService {
                     "6. Giám đốc\n" +
                     "7. exit menu");
             System.out.println("mời bạn nhập chức vụ");
-            int choice = Integer.getInteger(position);
+            int choice = Integer.getInteger(sc.nextLine());
             switch (choice) {
                 case 1:
                     System.out.println("chức vụ: Lễ Tân");
