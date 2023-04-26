@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface IBookingRepository {
     List<Booking> getList();
+
     void addNew(Booking booking);
 }

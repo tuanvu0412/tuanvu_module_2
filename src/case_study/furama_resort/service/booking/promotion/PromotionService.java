@@ -11,7 +11,7 @@ public class PromotionService implements IPromotionService {
 
     @Override
     public void displayCustomerGetService() {
-        List<Customer> list =new ArrayList<>();
+        List<Customer> list = new ArrayList<>();
         for (Customer C : list) {
             System.out.println(C + "");
         }

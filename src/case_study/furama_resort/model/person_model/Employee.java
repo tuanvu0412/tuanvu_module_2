@@ -40,7 +40,7 @@ public class Employee extends Person{
         this.salary = salary;
     }
 
-    public void setEmployList(String id, String name, String dateOfBirth, String male, String citizenIdentificationNumber, String phoneNumber, String email, String level, String position,String salary){
+    public void setEmployList(String id, String name, String dateOfBirth, String male, String citizenIdentificationNumber, String phoneNumber, String email, String level, String position, String salary) {
         this.getId();
         this.getName();
         this.getDateOfBirth();

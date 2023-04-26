@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FacilityRepositoryImpl implements IFacilityRepository {
-    static List<Facility>product=new ArrayList<>();
+    static List<Facility> product = new ArrayList<>();
 
     @Override
     public List<Facility> getListFacility() {

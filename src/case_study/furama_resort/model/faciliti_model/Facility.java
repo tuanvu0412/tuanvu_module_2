@@ -8,7 +8,7 @@ public class Facility {
     private String numberOfPerson;
     private String rentalType;
 
-    public Facility(){
+    public Facility() {
 
     }
 

@@ -5,18 +5,18 @@ import case_study.furama_resort.service.facility.FacilityService;
 import java.util.Scanner;
 
 public class FacilityController {
-    public  void facilityManagement(){
-        FacilityService facilityService=new FacilityService();
-        Scanner sc=new Scanner(System.in);
-        boolean flag= true;
-        do{
+    public void facilityManagement() {
+        FacilityService facilityService = new FacilityService();
+        Scanner sc = new Scanner(System.in);
+        boolean flag = true;
+        do {
             System.out.println("1. Display list facility\n" +
                     "2. Add new facility\n" +
                     "3. Display list facility\n" +
                     "4. Return main menu");
             System.out.println("mời bạn chọn");
-            String choice3=sc.nextLine();
-            switch (choice3){
+            String choice3 = sc.nextLine();
+            switch (choice3) {
                 case "1":
                     facilityService.display();
                     break;
@@ -31,6 +31,6 @@ public class FacilityController {
                 default:
                     System.out.println("bạn đã chọn sai");
             }
-        }while (flag);
+        } while (flag);
     }
 }

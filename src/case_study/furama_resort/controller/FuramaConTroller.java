@@ -7,12 +7,12 @@ import java.util.Scanner;
 public class FuramaConTroller {
 
 
-    public  void displayMenu() {
-        EmployeeController employeeController= new EmployeeController();
-        CustomerController customerController= new CustomerController();
-        FacilityController facilityController= new FacilityController();
-        BookingController bookingController= new BookingController();
-        PromotionController promotionController= new PromotionController();
+    public void displayMenu() {
+        EmployeeController employeeController = new EmployeeController();
+        CustomerController customerController = new CustomerController();
+        FacilityController facilityController = new FacilityController();
+        BookingController bookingController = new BookingController();
+        PromotionController promotionController = new PromotionController();
 
         Scanner sc = new Scanner(System.in);
         boolean flag = true;

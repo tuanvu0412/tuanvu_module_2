@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeRepositoryImpl implements IEmployeeRepository {
-    static List<Employee>employees=new ArrayList<>();
+    static List<Employee> employees = new ArrayList<>();
+
     @Override
     public List<Employee> getListEmployee() {
         return employees;
@@ -19,11 +20,11 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
 
     @Override
     public boolean editEmployeeList(String newId, String id, String name, String dateOfBirth, String male, String citizenIdentificationNumber, String phoneNumber, String email, String level, String position, String salary) {
-        List<Employee>list= new ArrayList<>();
-        int size=list.size();
+        List<Employee> list = new ArrayList<>();
+        int size = list.size();
         for (int i = 0; i < size; i++) {
-            if(list.get(i).getId().equals(newId)){
-                list.get(i).setEmployList(id,name,dateOfBirth,male,citizenIdentificationNumber,phoneNumber,email,level,position,salary);
+            if (list.get(i).getId().equals(newId)) {
+                list.get(i).setEmployList(id, name, dateOfBirth, male, citizenIdentificationNumber, phoneNumber, email, level, position, salary);
                 return true;
             }
         }

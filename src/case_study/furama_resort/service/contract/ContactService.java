@@ -10,28 +10,28 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ContactService implements IContactService {
-    Scanner sc= new Scanner(System.in);
-    ContactRepositoryImpl contactRepository=new ContactRepositoryImpl();
+    Scanner sc = new Scanner(System.in);
+    ContactRepositoryImpl contactRepository = new ContactRepositoryImpl();
 
     @Override
     public void displayContact() {
-        List<Contact>list= new ArrayList<>();
-        for (Contact c:list) {
-            System.out.println(c+"");
+        List<Contact> list = new ArrayList<>();
+        for (Contact c : list) {
+            System.out.println(c + "");
         }
     }
 
     @Override
     public void add() {
         System.out.println("nhập số hợp đồng");
-        String contractNumber=sc.nextLine();
+        String contractNumber = sc.nextLine();
         System.out.println("nhập id booking");
-        String idBooking=sc.nextLine();
+        String idBooking = sc.nextLine();
         System.out.println("nhập số tiền cọc trước");
-        String depositInAdvance=sc.nextLine();
+        String depositInAdvance = sc.nextLine();
         System.out.println("nhập tổng số tiền phải thanh toán");
-        String totalPaymentAmount=sc.nextLine();
-        contactRepository.add(new Contact(contractNumber,idBooking,depositInAdvance,totalPaymentAmount));
+        String totalPaymentAmount = sc.nextLine();
+        contactRepository.add(new Contact(contractNumber, idBooking, depositInAdvance, totalPaymentAmount));
     }
 
     @Override

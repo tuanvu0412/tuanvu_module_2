@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PromotionRepository implements IPromotionRepository {
-    List<Customer>customers= new ArrayList<>();
+    List<Customer> customers = new ArrayList<>();
 
     @Override
     public List<Customer> getCustomerListUseService() {

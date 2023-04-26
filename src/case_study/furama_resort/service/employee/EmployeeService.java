@@ -48,8 +48,8 @@ public class EmployeeService implements IEmployeeService {
         System.out.println("nhập email");
         String email = sc.nextLine();
         System.out.println("nhập trình độ chuyên môn");
-        String level =null;
-        do{
+        String level = null;
+        do {
             System.out.println("---Trình độ chuyên môn---\n" +
                     "1. trung cấp\n" +
                     "2. cao đẳng\n" +
@@ -57,27 +57,27 @@ public class EmployeeService implements IEmployeeService {
                     "4. sau đại học" +
                     "5. exit");
             System.out.println("chọn trình độ");
-            int choice=Integer.parseInt(sc.nextLine());
-            switch (choice){
+            int choice = Integer.parseInt(sc.nextLine());
+            switch (choice) {
                 case 1:
-                    level="trung cấp";
+                    level = "trung cấp";
                     break;
                 case 2:
-                    level="cao đẳng";
+                    level = "cao đẳng";
                     break;
                 case 3:
-                    level="đại học";
+                    level = "đại học";
                     break;
                 case 4:
-                    level="sau đại học";
+                    level = "sau đại học";
                     break;
                 case 5:
-                    flag=false;
+                    flag = false;
                     System.out.println("đã thoát khỏi");
                 default:
                     System.out.println("bạn nhập chưa đúng");
             }
-        }while (flag);
+        } while (flag);
         System.out.println("nhập chức vụ");
         String position = sc.nextLine();
         do {
@@ -125,31 +125,31 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void editEmployeeList() {
         System.out.println("nhập id mà bạn muốn sửa");
-        String editEmployee=sc.nextLine();
+        String editEmployee = sc.nextLine();
         System.out.println("nhập id mới");
-        String id=sc.nextLine();
+        String id = sc.nextLine();
         System.out.println("nhập tên mới");
-        String name=sc.nextLine();
+        String name = sc.nextLine();
         System.out.println("nhập ngày tháng năm sinh");
-        String dateOfBirth=sc.nextLine();
+        String dateOfBirth = sc.nextLine();
         System.out.println("nhập giới tính");
-        String male=sc.nextLine();
+        String male = sc.nextLine();
         System.out.println("nhập số căn cước công dân");
-        String citizenIdentificationNumber=sc.nextLine();
+        String citizenIdentificationNumber = sc.nextLine();
         System.out.println("nhập số điện thoại");
-        String phoneNumber=sc.nextLine();
+        String phoneNumber = sc.nextLine();
         System.out.println("nhập email");
-        String email=sc.nextLine();
+        String email = sc.nextLine();
         System.out.println("nhập trình độ chuyên môn");
-        String level=sc.nextLine();
+        String level = sc.nextLine();
         System.out.println("nhập chức vụ");
-        String position=sc.nextLine();
+        String position = sc.nextLine();
         System.out.println("nhập mức lương");
-        String salary=sc.nextLine();
-        boolean edit= employeeRepository.editEmployeeList(editEmployee,id,name,dateOfBirth,male,citizenIdentificationNumber,phoneNumber,email,level,position,salary);
-        if(edit){
+        String salary = sc.nextLine();
+        boolean edit = employeeRepository.editEmployeeList(editEmployee, id, name, dateOfBirth, male, citizenIdentificationNumber, phoneNumber, email, level, position, salary);
+        if (edit) {
             System.out.println("bạn đã sửa thành công");
-        }else {
+        } else {
             System.out.println("id nhân viên bạn nhập không có");
         }
     }

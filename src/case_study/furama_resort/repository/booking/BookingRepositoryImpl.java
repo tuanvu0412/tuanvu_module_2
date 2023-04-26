@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookingRepositoryImpl implements IBookingRepository {
-    static List<Booking>booking1=new ArrayList<>();
+    static List<Booking> booking1 = new ArrayList<>();
+
     @Override
     public List getList() {
         return booking1;
@@ -15,7 +16,7 @@ public class BookingRepositoryImpl implements IBookingRepository {
 
     @Override
     public void addNew(Booking booking) {
-      booking1.add(booking);
+        booking1.add(booking);
     }
 
 

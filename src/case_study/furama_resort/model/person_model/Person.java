@@ -9,7 +9,7 @@ public class Person {
     private String phoneNumber;
     private String email;
 
-    public Person(){
+    public Person() {
 
     }
 
@@ -81,7 +81,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + super.toString()+
+        return "Person{" + super.toString() +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +

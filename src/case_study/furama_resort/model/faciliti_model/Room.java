@@ -5,7 +5,7 @@ import case_study.furama_resort.model.faciliti_model.Facility;
 public class Room extends Facility {
     private String freeService;
 
-    public Room(){
+    public Room() {
 
     }
 
@@ -24,7 +24,7 @@ public class Room extends Facility {
 
     @Override
     public String toString() {
-        return "Room{" + super.toString()+
+        return "Room{" + super.toString() +
                 "freeService='" + freeService + '\'' +
                 '}';
     }

@@ -5,8 +5,8 @@ import case_study.furama_resort.service.employee.EmployeeService;
 import java.util.Scanner;
 
 public class EmployeeController {
-    public  void employeeManagement() {
-        EmployeeService employeeService= new EmployeeService();
+    public void employeeManagement() {
+        EmployeeService employeeService = new EmployeeService();
         Scanner sc = new Scanner(System.in);
         boolean flag = true;
         do {
@@ -27,7 +27,7 @@ public class EmployeeController {
                     employeeService.editEmployeeList();
                     break;
                 case "4":
-                    flag=false;
+                    flag = false;
                     break;
                 default:
                     System.out.println("bạn đã chọn sai");
