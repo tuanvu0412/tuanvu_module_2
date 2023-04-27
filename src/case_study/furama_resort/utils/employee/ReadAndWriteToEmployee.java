@@ -1,7 +1,6 @@
 package case_study.furama_resort.utils.employee;
 
-import case_study.furama_resort.model.person_model.Customer;
-import case_study.furama_resort.model.person_model.Employee;
+import case_study.furama_resort.model.person.Employee;
 
 import java.io.*;
 import java.util.ArrayList;

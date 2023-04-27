@@ -24,24 +24,34 @@ public class FuramaConTroller {
                     "5. Promotion Managerment\n" +
                     "6. Exit Menu");
             System.out.println("mời bạn chọn menu");
-            String choice = sc.nextLine();
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+                if (choice <= 0 || choice > 6) {
+                    throw new Exception("Chỉ được nhập từ 1 tới 6!!");
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("Nhập không đúng định dạng!!");
+            } catch (Exception e) {
+                System.err.println(e);
+            }
             switch (choice) {
-                case "1":
+                case 1:
                     employeeController.employeeManagement();
                     break;
-                case "2":
+                case 2:
                     customerController.customerManagement();
                     break;
-                case "3":
+                case 3:
                     facilityController.facilityManagement();
                     break;
-                case "4":
+                case 4:
                     bookingController.bookingManagement();
                     break;
-                case "5":
+                case 5:
                     promotionController.promotionManagement();
                     break;
-                case "6":
+                case 6:
                     flag = false;
                     System.out.println("đã thoát khỏi menu");
                     break;

@@ -1,6 +1,6 @@
 package case_study.furama_resort.repository.customer;
 
-import case_study.furama_resort.model.person_model.Customer;
+import case_study.furama_resort.model.person.Customer;
 import case_study.furama_resort.utils.customer.ReadAndWriteToCustomer;
 
 import java.util.ArrayList;
@@ -24,9 +24,9 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     }
 
     public int findId(String newId) {
-        List<Customer> list = ReadAndWriteToCustomer.read(PATH_CUSTOMER);
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId().equals(newId)) {
+       int size=customers.size();
+        for (int i = 0; i < size; i++) {
+            if (customers.get(i).getId().equals(newId)) {
                 return i;
             }
         }

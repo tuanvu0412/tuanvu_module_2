@@ -1,6 +1,6 @@
 package case_study.furama_resort.service.customer;
 
-import case_study.furama_resort.model.person_model.Customer;
+import case_study.furama_resort.model.person.Customer;
 import case_study.furama_resort.repository.customer.CustomerRepositoryImpl;
 import java.util.List;
 import java.util.Scanner;
@@ -20,7 +20,6 @@ public class CustomerService implements ICustomerService {
     }
     @Override
     public void add() {
-        boolean flag = true;
         System.out.println("nhập id của khách");
         String id = sc.nextLine();
         System.out.println("nhập tên của khách");
@@ -44,6 +43,7 @@ public class CustomerService implements ICustomerService {
         String email = sc.nextLine();
         System.out.print("chọn level khách hàng");
         String customerLevel = null;
+        boolean flag = true;
         do {
             System.out.println("---Customer Level----\n" +
                     "1. Diamond\n" +

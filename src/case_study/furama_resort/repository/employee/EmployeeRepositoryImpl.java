@@ -1,9 +1,8 @@
 package case_study.furama_resort.repository.employee;
 
-import case_study.furama_resort.model.person_model.Employee;
+import case_study.furama_resort.model.person.Employee;
 import case_study.furama_resort.utils.employee.ReadAndWriteToEmployee;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeRepositoryImpl implements IEmployeeRepository {

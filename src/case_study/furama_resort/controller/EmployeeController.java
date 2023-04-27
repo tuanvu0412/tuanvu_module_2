@@ -15,18 +15,28 @@ public class EmployeeController {
                     "3. Edit employee\n" +
                     "4. Return main menu");
             System.out.println("mời bạn chọn menu");
-            String choice1 = sc.nextLine();
-            switch (choice1) {
-                case "1":
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+                if (choice <= 0 || choice > 4) {
+                    throw new Exception("Chỉ được nhập từ 1 tới 4.");
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("Nhập không đúng định dạng.");
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+            switch (choice) {
+                case 1:
                     employeeService.displayEmployeeList();
                     break;
-                case "2":
+                case 2:
                     employeeService.addNewEmployee();
                     break;
-                case "3":
+                case 3:
                     employeeService.editEmployeeList();
                     break;
-                case "4":
+                case 4:
                     flag = false;
                     System.out.println("đã thoát");
                     break;

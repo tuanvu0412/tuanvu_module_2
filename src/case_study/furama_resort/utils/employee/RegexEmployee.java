@@ -1,7 +1,7 @@
 package case_study.furama_resort.utils.employee;
 
 
-public class Regex {
+public class RegexEmployee {
     public static boolean checkIdEmployee(String employeeId) {
         String PATTERN_ID = "(NV)-\\d{4}";
         return employeeId.matches(PATTERN_ID);

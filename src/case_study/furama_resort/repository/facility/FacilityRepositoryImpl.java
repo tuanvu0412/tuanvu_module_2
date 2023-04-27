@@ -1,6 +1,6 @@
 package case_study.furama_resort.repository.facility;
 
-import case_study.furama_resort.model.faciliti_model.Facility;
+import case_study.furama_resort.model.faciliti.Facility;
 
 import case_study.furama_resort.utils.facility.ReadAndWrite4;
 

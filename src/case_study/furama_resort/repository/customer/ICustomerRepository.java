@@ -1,6 +1,6 @@
 package case_study.furama_resort.repository.customer;
 
-import case_study.furama_resort.model.person_model.Customer;
+import case_study.furama_resort.model.person.Customer;
 
 import java.util.List;
 

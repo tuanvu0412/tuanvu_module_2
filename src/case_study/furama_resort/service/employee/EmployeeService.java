@@ -1,8 +1,8 @@
 package case_study.furama_resort.service.employee;
 
-import case_study.furama_resort.model.person_model.Employee;
+import case_study.furama_resort.model.person.Employee;
 import case_study.furama_resort.repository.employee.EmployeeRepositoryImpl;
-import case_study.furama_resort.utils.employee.Regex;
+import case_study.furama_resort.utils.employee.RegexEmployee;
 
 import java.util.List;
 import java.util.Scanner;
@@ -28,66 +28,66 @@ public class EmployeeService implements IEmployeeService {
     public void addNewEmployee() {
         String id;
         do {
-            System.out.println("nhập id nhân viên: ");
+            System.out.print("nhập id nhân viên: ");
             id = sc.nextLine();
-            if (Regex.checkIdEmployee(id)) {
-                System.out.print("thêm mã thành công.");
+            if (RegexEmployee.checkIdEmployee(id)) {
+                System.out.print("thêm mã thành công.\n");
             } else {
                 System.err.print("nhập mã sai định dạng.");
             }
-        } while (!Regex.checkIdEmployee(id));
+        } while (!RegexEmployee.checkIdEmployee(id));
         String name;
         do {
-            System.out.println("nhập tên nhân viên: ");
+            System.out.print("nhập tên nhân viên: ");
             name = sc.nextLine();
-            if (Regex.checkNameEmployee(name)) {
-                System.out.print("thêm tên nhân viên thành công.");
+            if (RegexEmployee.checkNameEmployee(name)) {
+                System.out.print("thêm tên nhân viên thành công.\n");
             } else {
                 System.err.print("nhập tên sai định dạng.");
             }
-        } while (!Regex.checkNameEmployee(name));
+        } while (!RegexEmployee.checkNameEmployee(name));
         String dateOfBirth;
         do {
-            System.out.println("nhập ngày tháng năm sinh của nhân viên: ");
+            System.out.print("nhập ngày tháng năm sinh của nhân viên: ");
             dateOfBirth = sc.nextLine();
-            if (Regex.checkDateOfBirth(dateOfBirth)) {
-                System.out.print("thêm ngày tháng của nhân viên thành công.");
+            if (RegexEmployee.checkDateOfBirth(dateOfBirth)) {
+                System.out.print("thêm ngày tháng của nhân viên thành công.\n");
             } else {
-                System.err.print("nhập ngày tháng không đúng định dạng.");
+                System.err.print("nhập ngày tháng không đúng định dạng, mời bạn nhập lại.");
             }
-        } while (!Regex.checkDateOfBirth(dateOfBirth));
+        } while (!RegexEmployee.checkDateOfBirth(dateOfBirth));
         String gender;
         do {
             System.out.print("nhập giới tính, 1 là nam,2 là nữ, 3 là giới tính khác: ");
             gender = sc.nextLine();
             if (gender.equals("1")) {
-                System.out.print("nam");
+                System.out.print("nam.\n");
             } else if (gender.equals("2")) {
-                System.out.print("nữ");
+                System.out.print("nữ.\n");
             } else if (gender.equals("3")) {
-                System.out.print("giới tính khác");
+                System.out.print("giới tính khác.\n");
             }
         } while (!gender.equals(gender));
         String citizenIdentificationNumber;
         do {
             System.out.print("nhập số căn cước công dân hoặc CMND: ");
             citizenIdentificationNumber = sc.nextLine();
-            if (Regex.checkCitizenIdentificationNumber(citizenIdentificationNumber)) {
-                System.out.println("thêm sô căn cước thành công.");
+            if (RegexEmployee.checkCitizenIdentificationNumber(citizenIdentificationNumber)) {
+                System.out.println("thêm sô căn cước thành công.\n");
             } else {
                 System.err.println("nhập số căn cước không đúng định dạng.");
             }
-        } while (!Regex.checkCitizenIdentificationNumber(citizenIdentificationNumber));
+        } while (!RegexEmployee.checkCitizenIdentificationNumber(citizenIdentificationNumber));
         String phoneNumber;
         do {
             System.out.print("nhập số điện thoại: ");
             phoneNumber = sc.nextLine();
-            if (Regex.checkPhoneNumber(phoneNumber)) {
-                System.out.println("thêm số điện thoại thành công.");
+            if (RegexEmployee.checkPhoneNumber(phoneNumber)) {
+                System.out.println("thêm số điện thoại thành công.\n");
             } else {
                 System.err.println("nhập số điện thoại chưa đúng định dạng. ");
             }
-        } while (!Regex.checkPhoneNumber(phoneNumber));
+        } while (!RegexEmployee.checkPhoneNumber(phoneNumber));
         System.out.print("nhập email: ");
         String email = sc.nextLine();
         System.out.print("nhập trình độ chuyên môn: ");
@@ -166,12 +166,12 @@ public class EmployeeService implements IEmployeeService {
                     System.err.println("bạn chọn chưa đúng chức vụ.");
             }
         } while (flag1);
-        String salary;
+        int salary;
         do {
             System.out.print("mời bạn nhập mức lương: ");
-            salary = sc.nextLine();
-        } while (!salary.equals(0));
-        employeeRepository.add(new Employee(id, name, dateOfBirth, gender, citizenIdentificationNumber, phoneNumber, email, level, position, salary));
+            salary = Integer.parseInt(sc.nextLine());
+        } while (salary <= 0);
+        employeeRepository.add(new Employee(id, name, dateOfBirth, gender, citizenIdentificationNumber, phoneNumber, email, level, position, String.valueOf(salary)));
     }
 
     @Override
@@ -184,46 +184,46 @@ public class EmployeeService implements IEmployeeService {
             do {
                 System.out.print("nhập id mới: ");
                 id = sc.nextLine();
-                if (Regex.checkIdEmployee(id)) {
-                    System.out.println("đã sửa id thành công.");
+                if (RegexEmployee.checkIdEmployee(id)) {
+                    System.out.println("đã sửa id thành công.\n");
                 } else {
                     System.err.println(" nhập chưa đúng,mời bạn nhập lại.");
                 }
-            } while (!Regex.checkIdEmployee(id));
+            } while (!RegexEmployee.checkIdEmployee(id));
             employeeRepository.getListEmployee().get(edit).setId(id);
             employeeRepository.editEmployeeList();
             String name;
             do {
                 System.out.print("nhập tên mới: ");
                 name = sc.nextLine();
-                if (Regex.checkNameEmployee(name)) {
-                    System.out.println("đã sửa tên thành công.");
+                if (RegexEmployee.checkNameEmployee(name)) {
+                    System.out.println("đã sửa tên thành công.\n");
                 } else {
                     System.err.println("nhập chưa đúng,mời bạn nhập lại.");
                 }
-            } while (!Regex.checkNameEmployee(name));
+            } while (!RegexEmployee.checkNameEmployee(name));
             employeeRepository.getListEmployee().get(edit).setName(name);
             employeeRepository.editEmployeeList();
             String dateOfBirth;
             do {
                 System.out.print("nhập ngày tháng năm sinh: ");
                 dateOfBirth = sc.nextLine();
-                if (!Regex.checkDateOfBirth(dateOfBirth)) {
-                    System.out.println("đã sửa ngày tháng năm sinh thành công.");
+                if (RegexEmployee.checkDateOfBirth(dateOfBirth)) {
+                    System.out.println("đã sửa ngày tháng năm sinh thành công.\n");
                 } else {
                     System.err.println("nhập chưa đúng, mời bạn nhập lại.");
                 }
-            } while (!Regex.checkDateOfBirth(dateOfBirth));
+            } while (!RegexEmployee.checkDateOfBirth(dateOfBirth));
             employeeRepository.getListEmployee().get(edit).setDateOfBirth(dateOfBirth);
             employeeRepository.editEmployeeList();
             System.out.print("Enter gender for employee, choice 1 is man, choice 2 is girl, choice 3 is different gender");
             String gender = sc.nextLine();
             if (gender.equals("1")) {
-                System.out.println("man");
+                System.out.println("man\n");
             } else if (gender.equals("2")) {
-                System.out.println("girl");
+                System.out.println("girl\n");
             } else if (gender.equals("3")) {
-                System.out.println("different gender");
+                System.out.println("different gender\n");
             }
             employeeRepository.getListEmployee().get(edit).setGender(gender);
             employeeRepository.editEmployeeList();
@@ -231,24 +231,24 @@ public class EmployeeService implements IEmployeeService {
             do {
                 System.out.print("nhập số căn cước công dân: ");
                 citizenIdentificationNumber = sc.nextLine();
-                if (Regex.checkCitizenIdentificationNumber(citizenIdentificationNumber)) {
-                    System.out.println("đã sửa thành công.");
+                if (RegexEmployee.checkCitizenIdentificationNumber(citizenIdentificationNumber)) {
+                    System.out.println("đã sửa thành công.\n");
                 } else {
                     System.err.println("chưa đúng định dạng, mời bạn nhập lại.");
                 }
-            } while (!Regex.checkCitizenIdentificationNumber(citizenIdentificationNumber));
+            } while (!RegexEmployee.checkCitizenIdentificationNumber(citizenIdentificationNumber));
             employeeRepository.getListEmployee().get(edit).setCitizenIdentificationNumber(citizenIdentificationNumber);
             employeeRepository.editEmployeeList();
             String phoneNumber;
             do {
                 System.out.print("nhập số điện thoại: ");
                 phoneNumber = sc.nextLine();
-                if (Regex.checkPhoneNumber(phoneNumber)) {
-                    System.out.println("bạn đã sửa thành công.");
+                if (RegexEmployee.checkPhoneNumber(phoneNumber)) {
+                    System.out.println("bạn đã sửa thành công.\n");
                 } else {
                     System.err.println("nhập chưa đúng định dạng, mời bạn nhập lại.");
                 }
-            } while (!Regex.checkPhoneNumber(phoneNumber));
+            } while (!RegexEmployee.checkPhoneNumber(phoneNumber));
             employeeRepository.getListEmployee().get(edit).setPhoneNumber(phoneNumber);
             employeeRepository.editEmployeeList();
             System.out.print("nhập email: ");
@@ -335,11 +335,14 @@ public class EmployeeService implements IEmployeeService {
             } while (flag1);
             employeeRepository.getListEmployee().get(edit).setPosition(position);
             employeeRepository.editEmployeeList();
-            System.out.print("nhập mức lương: ");
-            String salary = sc.nextLine();
-            employeeRepository.getListEmployee().get(edit).setSalary(salary);
+            int salary;
+            do {
+                System.out.print("nhập mức lương: ");
+                salary = Integer.parseInt(sc.nextLine());
+            } while (salary <= 0);
+            employeeRepository.getListEmployee().get(edit).setSalary(String.valueOf(salary));
             employeeRepository.editEmployeeList();
-            System.out.print("bạn đã sửa thành công.");
+            System.out.print("bạn đã sửa thành công.\n");
         } else {
             System.err.println("id nhân viên bạn nhập không có.");
         }

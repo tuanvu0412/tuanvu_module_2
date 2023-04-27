@@ -1,4 +1,4 @@
-package case_study.furama_resort.model.faciliti_model;
+package case_study.furama_resort.model.faciliti;
 
 public class Facility {
     private String idService;

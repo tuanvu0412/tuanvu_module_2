@@ -1,10 +1,9 @@
 package case_study.furama_resort.service.facility;
 
-import case_study.furama_resort.model.faciliti_model.Facility;
+import case_study.furama_resort.model.faciliti.Facility;
 import case_study.furama_resort.repository.facility.FacilityRepositoryImpl;
 import case_study.furama_resort.service.IService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 

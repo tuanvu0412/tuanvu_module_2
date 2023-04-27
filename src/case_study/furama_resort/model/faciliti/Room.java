@@ -1,6 +1,4 @@
-package case_study.furama_resort.model.faciliti_model;
-
-import case_study.furama_resort.model.faciliti_model.Facility;
+package case_study.furama_resort.model.faciliti;
 
 public class Room extends Facility {
     private String freeService;
