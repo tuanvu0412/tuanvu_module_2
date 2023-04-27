@@ -1,28 +1,27 @@
-package case_study.furama_resort.utils.customer;
+package case_study.furama_resort.utils.contract;
 
-import case_study.furama_resort.model.Contact;
-import case_study.furama_resort.model.person_model.Customer;
+import case_study.furama_resort.model.Contract;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadAndWrite2 {
-    public static List<Customer> Read(String PATH) {
+public class ReadAndWriteToContract {
+    public static List<Contract> read(String PATH) {
         File file = new File(PATH);
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
-        List<Customer> list = new ArrayList<>();
+        List<Contract> list = new ArrayList<>();
         try {
             fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
             String temp = null;
             String[] newArr;
-            Customer customer;
+            Contract contact;
             while ((temp = bufferedReader.readLine()) != null && !temp.equals("")) {
                 newArr = temp.split(",");
-                customer = new Customer(newArr[0], newArr[1], newArr[2], newArr[3],newArr[4],newArr[5],newArr[6],newArr[7],newArr[8]);
-                list.add(customer);
+                contact = new Contract(newArr[0], newArr[1], newArr[2], newArr[3]);
+                list.add(contact);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -39,15 +38,15 @@ public class ReadAndWrite2 {
         return list;
     }
 
-    public static void Write1(List<Customer> customers, String filePath) {
+    public static void write1(List<Contract> contactList, String filePath) {
         File file = new File(filePath);
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
             fileWriter = new FileWriter(file);
             bufferedWriter = new BufferedWriter(fileWriter);
-            for (Customer c : customers) {
-                bufferedWriter.write(c.customerList());
+            for (Contract c : contactList) {
+                bufferedWriter.write(c.contracList());
                 bufferedWriter.newLine();
             }
             bufferedWriter.flush();

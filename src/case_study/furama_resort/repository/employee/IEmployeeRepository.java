@@ -9,5 +9,5 @@ public interface IEmployeeRepository {
 
     void add(Employee employee);
 
-    boolean editEmployeeList(String newId, String id, String name, String dateOfBirth, String male, String citizenIdentificationNumber, String phoneNumber, String email, String level, String position, String salary);
+    void editEmployeeList();
 }

@@ -4,7 +4,7 @@ public class Person {
     private String id;
     private String name;
     private String dateOfBirth;
-    private String male;
+    private String gender;
     private String citizenIdentificationNumber;
     private String phoneNumber;
     private String email;
@@ -17,7 +17,7 @@ public class Person {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
-        this.male = male;
+        this.gender = male;
         this.citizenIdentificationNumber = citizenIdentificationNumber;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -47,12 +47,12 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getMale() {
-        return male;
+    public String getGender() {
+        return gender;
     }
 
-    public void setMale(String male) {
-        this.male = male;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getCitizenIdentificationNumber() {
@@ -84,7 +84,7 @@ public class Person {
         return "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", male='" + male + '\'' +
+                ", male='" + gender + '\'' +
                 ", citizenIdentificationNumber='" + citizenIdentificationNumber + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +

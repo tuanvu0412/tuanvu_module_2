@@ -28,17 +28,6 @@ public class Customer extends Person{
     public void setAddress(String address) {
         this.address = address;
     }
-    public void setCustomerList(String id, String name, String dateOfBirth, String male, String citizenIdentificationNumber, String phoneNumber, String email, String customerLevel, String address) {
-        this.getId();
-        this.getName();
-        this.getDateOfBirth();
-        this.getMale();
-        this.getCitizenIdentificationNumber();
-        this.getPhoneNumber();
-        this.getEmail();
-        this.getCustomerLevel();
-        this.getAddress();
-    }
 
     @Override
     public String toString() {

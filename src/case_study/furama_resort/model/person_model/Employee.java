@@ -1,11 +1,11 @@
 package case_study.furama_resort.model.person_model;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private String level;
     private String position;
     private String salary;
 
-    public Employee(){
+    public Employee() {
 
     }
 
@@ -40,30 +40,31 @@ public class Employee extends Person{
         this.salary = salary;
     }
 
-    public void setEmployList(String id, String name, String dateOfBirth, String male, String citizenIdentificationNumber, String phoneNumber, String email, String level, String position, String salary) {
-        this.getId();
-        this.getName();
-        this.getDateOfBirth();
-        this.getMale();
-        this.getCitizenIdentificationNumber();
-        this.getPhoneNumber();
-        this.getEmail();
-        this.getLevel();
-        this.getSalary();
-    }
     @Override
     public String toString() {
-        return "Employee{" + super.toString()+
-                "level='" + level + '\'' +
+        return "id='" + getId() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", dateOfBirth='" + getDateOfBirth() + '\'' +
+                ", male='" + getGender() + '\'' +
+                ", citizenIdentificationNumber='" + getCitizenIdentificationNumber() + '\'' +
+                ", phoneNumber='" + getPhoneNumber() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", level='" + level + '\'' +
                 ", position='" + position + '\'' +
                 ", salary='" + salary + '\'' +
                 '}';
     }
-    public String employeeList(){
-        return "Employee{" + super.toString()+
-                "level='" + level + "," +
-                ", position='" + position + "," +
-                ", salary='" + salary + "," +
-                '}';
+
+    public String employeeList() {
+        return getId() + "," +
+                getName() + "," +
+                getDateOfBirth() + "," +
+                getGender() + "," +
+                getCitizenIdentificationNumber() + "," +
+                getPhoneNumber() + "," +
+                getEmail() + "," +
+                level + "," +
+                position + "," +
+                salary;
     }
 }

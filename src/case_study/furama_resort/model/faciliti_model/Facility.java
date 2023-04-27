@@ -69,14 +69,6 @@ public class Facility {
         this.rentalType = rentalType;
     }
 
-//    public void setFacilityList(String idService, String nameService, String utilities, String taxExpense, String numberOfPerson, String rentalType){
-//        this.getIdService();
-//        this.getNameService();
-//        this.getUtilities();
-//        this.getTaxExpense();
-//        this.getNumberOfPerson();
-//        this.getRentalType();
-//    }
 
     @Override
     public String toString() {

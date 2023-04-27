@@ -1,13 +1,13 @@
 package case_study.furama_resort.repository.contract;
 
-import case_study.furama_resort.model.Contact;
+import case_study.furama_resort.model.Contract;
 
 import java.util.List;
 
 public interface IContactRepository {
-    List<Contact> getContactList();
+    List<Contract> getContactList();
 
-    void add(Contact contact);
+    void add(Contract contact);
 
-    boolean editContact(String contactNumber, String contractNumber, String idBooking, String depositInAdvance, String totalPaymentAmount);
+    void editContact();
 }

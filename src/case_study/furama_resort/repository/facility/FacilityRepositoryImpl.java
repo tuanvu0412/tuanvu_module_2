@@ -1,7 +1,7 @@
 package case_study.furama_resort.repository.facility;
 
 import case_study.furama_resort.model.faciliti_model.Facility;
-import case_study.furama_resort.repository.IRepository;
+
 import case_study.furama_resort.utils.facility.ReadAndWrite4;
 
 import java.util.ArrayList;
@@ -21,6 +21,5 @@ public class FacilityRepositoryImpl implements IFacilityRepository {
     public void add(Facility facility) {
         product.add(facility);
         ReadAndWrite4.Write1(product,PATH_FACILITY);
-        ReadAndWrite4.Read(PATH_FACILITY);
     }
 }

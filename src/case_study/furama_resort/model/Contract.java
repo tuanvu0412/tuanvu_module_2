@@ -1,16 +1,16 @@
 package case_study.furama_resort.model;
 
-public class Contact {
+public class Contract {
     private String contractNumber;
     private String idBooking;
     private String depositInAdvance;
     private String totalPaymentAmount;
 
-    public Contact(){
+    public Contract(){
 
     }
 
-    public Contact(String contractNumber, String idBooking, String depositInAdvance, String totalPaymentAmount) {
+    public Contract(String contractNumber, String idBooking, String depositInAdvance, String totalPaymentAmount) {
         this.contractNumber = contractNumber;
         this.idBooking = idBooking;
         this.depositInAdvance = depositInAdvance;
@@ -47,13 +47,6 @@ public class Contact {
 
     public void setTotalPaymentAmount(String totalPaymentAmount) {
         this.totalPaymentAmount = totalPaymentAmount;
-    }
-
-    public void setContact(String contractNumber, String idBooking, String depositInAdvance, String totalPaymentAmount){
-        this.getContractNumber();
-        this.getIdBooking();
-        this.getDepositInAdvance();
-        this.getTotalPaymentAmount();
     }
 
     @Override
