@@ -1,6 +1,6 @@
 package case_study.furama_resort.controller;
 
-import case_study.furama_resort.service.booking.promotion.PromotionService;
+import case_study.furama_resort.service.promotion.PromotionService;
 
 import java.util.Scanner;
 
@@ -24,6 +24,7 @@ public class PromotionController {
                     break;
                 case "3":
                     flag=false;
+                    System.out.println("đã thoát");
                     break;
                 default:
                     System.out.println("bạn đã chọn sai");

@@ -8,7 +8,7 @@ public class Booking {
     private String idCustomer;
     private String idService;
 
-    public Booking(String date, String startDate, String endDate, String idCustomer, String idService){
+    public Booking(String date, String startDate, String endDate, String idCustomer, String idService) {
 
     }
 
@@ -78,6 +78,17 @@ public class Booking {
                 ", endDate='" + endDate + '\'' +
                 ", idCustomer='" + idCustomer + '\'' +
                 ", idService='" + idService + '\'' +
+                '}';
+    }
+
+    public String bookingList() {
+        return "Booking{" +
+                "idBooking='" + idBooking + "," +
+                ", date='" + date + "," +
+                ", startDate='" + startDate + "," +
+                ", endDate='" + endDate + "," +
+                ", idCustomer='" + idCustomer + "," +
+                ", idService='" + idService + "," +
                 '}';
     }
 }

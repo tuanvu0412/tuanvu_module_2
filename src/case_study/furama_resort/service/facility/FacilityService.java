@@ -14,7 +14,7 @@ public class FacilityService implements IService {
 
     @Override
     public void display() {
-        List<Facility> list = new ArrayList<>();
+        List<Facility> list = facilityRepository.getListFacility();
         for (Facility f : list) {
             System.out.println(f + "");
         }

@@ -2,10 +2,6 @@ package case_study.furama_resort.service.customer;
 
 import case_study.furama_resort.model.person_model.Customer;
 import case_study.furama_resort.repository.customer.CustomerRepositoryImpl;
-import case_study.furama_resort.service.IService;
-import com.sun.deploy.security.SandboxSecurity;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,23 +11,23 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void displayCustomerList() {
-        List<Customer> list = new ArrayList<>();
+        List<Customer> list = customerRepository.getListCustomer();
         for (Customer c : list) {
-            System.out.println(c + "");
+            if (c.getCustomerLevel() != null) {
+                System.out.println(c + " ");
+            }
         }
     }
-
     @Override
     public void add() {
-        customerRepository.getListCustomer();
-        boolean flag= true;
+        boolean flag = true;
         System.out.println("nhập id của khách");
         String id = sc.nextLine();
         System.out.println("nhập tên của khách");
         String name = sc.nextLine();
         System.out.println("nhập ngày tháng năm sinh");
         String dateOfBirth = sc.nextLine();
-        System.out.println("nhập giới tính");
+        System.out.println("nhập giới tính: 1 là nam, 2 là nữ, giới tính khác nhập bất kì");
         String male = sc.nextLine();
         if (male.equals("1")) {
             System.out.println("nam");
@@ -57,62 +53,63 @@ public class CustomerService implements ICustomerService {
                     "5. Member\n" +
                     "6. exit\n" +
                     "mời chọn: ");
-            int choice = Integer.parseInt(sc.nextLine());
-            switch (choice) {
+            int customerLevel1 = Integer.parseInt(sc.nextLine());
+            switch (customerLevel1) {
                 case 1:
                     customerLevel = "Diamond";
                     break;
                 case 2:
-                    customerLevel="Platinum";
+                    customerLevel = "Platinum";
                     break;
                 case 3:
-                    customerLevel="Gold";
+                    customerLevel = "Gold";
                     break;
                 case 4:
-                    customerLevel="Sivel";
+                    customerLevel = "Sivel";
                     break;
                 case 5:
-                    customerLevel="Sivel";
+                    customerLevel = "member";
+                    break;
                 case 6:
-                    flag=false;
+                    flag = false;
                     System.out.println("đã thoát");
+                    break;
                 default:
                     System.out.println("chọn chưa đúng");
 
             }
-        }while (flag);
+        } while (flag);
         System.out.println("nhập địa chỉ khách hàng");
-        String address=sc.nextLine();
-        customerRepository.add(new Customer(id,name,dateOfBirth,male,citizenIdentificationNumber,phoneNumber,email,customerLevel,address));
+        String address = sc.nextLine();
+        customerRepository.add(new Customer(id, name, dateOfBirth, male, citizenIdentificationNumber, phoneNumber, email, customerLevel, address));
     }
 
     @Override
     public void editCustomerList() {
-        customerRepository.getListCustomer();
         System.out.println("nhập id muốn sửa");
-        String editCustomer=sc.nextLine();
+        String editCustomer = sc.nextLine();
         System.out.println("nhập id mới của khách hàng");
-        String id=sc.nextLine();
+        String id = sc.nextLine();
         System.out.println("nhập tên mới của khách");
-        String name=sc.nextLine();
+        String name = sc.nextLine();
         System.out.println("nhập ngày tháng năm sinh");
-        String dateOfBirth=sc.nextLine();
+        String dateOfBirth = sc.nextLine();
         System.out.println("nhập lại giới tính");
-        String male=sc.nextLine();
+        String male = sc.nextLine();
         System.out.println("nhập căn cước công dân hoặc passport");
-        String citizenIdentificationNumber=sc.nextLine();
+        String citizenIdentificationNumber = sc.nextLine();
         System.out.println("nhập số điện thoại");
-        String phoneNumber=sc.nextLine();
+        String phoneNumber = sc.nextLine();
         System.out.println("nhập email");
-        String email=sc.nextLine();
+        String email = sc.nextLine();
         System.out.println("nhập level của khách hàng");
-        String customerLevel=sc.nextLine();
+        String customerLevel = sc.nextLine();
         System.out.println("nhập địa chỉ của khách hàng");
-        String address=sc.nextLine();
-        boolean edit=customerRepository.editCustomerList(editCustomer,id,name,dateOfBirth,male,citizenIdentificationNumber,phoneNumber,email,customerLevel,address);
-        if(edit){
+        String address = sc.nextLine();
+        boolean edit = customerRepository.editCustomerList(editCustomer, id, name, dateOfBirth, male, citizenIdentificationNumber, phoneNumber, email, customerLevel, address);
+        if (edit) {
             System.out.println("đã được thay đổi");
-        }else {
+        } else {
             System.out.println("id bạn nhập chưa đúng");
         }
     }

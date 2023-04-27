@@ -39,6 +39,7 @@ public class BookingController {
                     break;
                 case "6":
                     flag = false;
+                    System.out.println("đã thoát");
                     break;
                 default:
                     System.out.println("bạn đã chọn sai");

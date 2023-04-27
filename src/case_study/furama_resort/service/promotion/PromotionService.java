@@ -1,17 +1,16 @@
-package case_study.furama_resort.service.booking.promotion;
+package case_study.furama_resort.service.promotion;
 
 import case_study.furama_resort.model.person_model.Customer;
-import case_study.furama_resort.repository.promotion.PromotionRepository;
+import case_study.furama_resort.repository.customer.CustomerRepositoryImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PromotionService implements IPromotionService {
-    PromotionRepository promotionRepository = new PromotionRepository();
+    CustomerRepositoryImpl customerRepository= new CustomerRepositoryImpl();
 
     @Override
     public void displayCustomerGetService() {
-        List<Customer> list = new ArrayList<>();
+        List<Customer> list =customerRepository.getListCustomer();
         for (Customer C : list) {
             System.out.println(C + "");
         }
@@ -19,7 +18,7 @@ public class PromotionService implements IPromotionService {
 
     @Override
     public void disPlayCustomerGetVoucher() {
-        List<Customer> list = new ArrayList<>();
+        List<Customer> list = customerRepository.getListCustomer();
         for (Customer c : list) {
             System.out.println(c + "");
         }

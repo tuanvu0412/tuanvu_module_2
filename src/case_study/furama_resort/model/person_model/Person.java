@@ -81,8 +81,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + super.toString() +
-                "id='" + id + '\'' +
+        return "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", male='" + male + '\'' +

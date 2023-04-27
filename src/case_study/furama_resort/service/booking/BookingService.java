@@ -3,6 +3,7 @@ package case_study.furama_resort.service.booking;
 import case_study.furama_resort.model.Booking;
 import case_study.furama_resort.repository.booking.BookingRepositoryImpl;
 import case_study.furama_resort.service.IService;
+import com.sun.scenario.effect.impl.prism.PrImage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +11,13 @@ import java.util.Scanner;
 
 public class BookingService implements IService {
     Scanner sc = new Scanner(System.in);
-    BookingRepositoryImpl bookingRepository = new BookingRepositoryImpl();
+    private BookingRepositoryImpl bookingRepository = new BookingRepositoryImpl();
 
     @Override
     public void display() {
-        List<Booking> list = new ArrayList<>();
+        List<Booking> list = bookingRepository.getList();
         for (Booking s : list) {
-            System.out.println(s + "");
+            System.out.println(s + " ");
         }
     }
 
@@ -35,6 +36,6 @@ public class BookingService implements IService {
         String idCustomer = sc.nextLine();
         System.out.println("nhập id dịch vụ");
         String idService = sc.nextLine();
-        bookingRepository.addNew(new Booking(date, startDate, endDate, idCustomer, idService));
+        bookingRepository.addNew(new Booking(idBooking,date, startDate, endDate, idCustomer, idService));
     }
 }

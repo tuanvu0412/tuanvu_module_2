@@ -15,9 +15,9 @@ public class ContactService implements IContactService {
 
     @Override
     public void displayContact() {
-        List<Contact> list = new ArrayList<>();
+        List<Contact> list = contactRepository.getContactList();
         for (Contact c : list) {
-            System.out.println(c + "");
+            System.out.println(c + " ");
         }
     }
 

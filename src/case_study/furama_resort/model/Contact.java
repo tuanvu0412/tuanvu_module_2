@@ -65,4 +65,12 @@ public class Contact {
                 ", totalPaymentAmount='" + totalPaymentAmount + '\'' +
                 '}';
     }
+    public String contracList(){
+        return "Contract{" +
+                "contractNumber='" + contractNumber + "," +
+                ", idBooking='" + idBooking + "," +
+                ", depositInAdvance='" + depositInAdvance + "," +
+                ", totalPaymentAmount='" + totalPaymentAmount + "," +
+                '}';
+    }
 }

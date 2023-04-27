@@ -28,6 +28,7 @@ public class EmployeeController {
                     break;
                 case "4":
                     flag = false;
+                    System.out.println("đã thoát");
                     break;
                 default:
                     System.out.println("bạn đã chọn sai");

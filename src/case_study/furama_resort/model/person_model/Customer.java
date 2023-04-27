@@ -47,4 +47,10 @@ public class Customer extends Person{
                 ", address='" + address + '\'' +
                 '}';
     }
+    public String customerList(){
+        return "Customer{" + super.toString()+
+                "customerLevel='" + customerLevel + "," +
+                ", address='" + address + "," +
+                '}';
+    }
 }

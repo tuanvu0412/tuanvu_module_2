@@ -89,4 +89,14 @@ public class Facility {
                 ", rentalType='" + rentalType + '\'' +
                 '}';
     }
+    public  String facilityList(){
+        return "Facility{" +
+                "idService='" + idService + "," +
+                ", nameService='" + nameService + "," +
+                ", utilities='" + utilities + "," +
+                ", taxExpense='" + taxExpense + "," +
+                ", numberOfPerson='" + numberOfPerson + "," +
+                ", rentalType='" + rentalType + "," +
+                '}';
+    }
 }

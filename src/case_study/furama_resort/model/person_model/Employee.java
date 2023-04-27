@@ -59,4 +59,11 @@ public class Employee extends Person{
                 ", salary='" + salary + '\'' +
                 '}';
     }
+    public String employeeList(){
+        return "Employee{" + super.toString()+
+                "level='" + level + "," +
+                ", position='" + position + "," +
+                ", salary='" + salary + "," +
+                '}';
+    }
 }
