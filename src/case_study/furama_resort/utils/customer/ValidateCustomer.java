@@ -1,13 +1,13 @@
 package case_study.furama_resort.utils.customer;
 
-public class RegexCustomer {
+public class ValidateCustomer {
     public static boolean checkIdCustomer(String customerId) {
         String PATTERN_ID = "(KH)-\\d{4}";
         return customerId.matches(PATTERN_ID);
     }
 
     public static boolean checkNameCustomer(String customerName) {
-        String PATTERN_NAME = "^([A-Z]{1}[a-z]{1,}\\s)+([A-Z]{1}[a-z]{1,}){1}";
+        String PATTERN_NAME = "^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$";
         return customerName.matches(PATTERN_NAME);
     }
 

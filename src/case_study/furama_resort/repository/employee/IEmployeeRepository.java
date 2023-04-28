@@ -9,5 +9,5 @@ public interface IEmployeeRepository {
 
     void add(Employee employee);
 
-    void editEmployeeList();
+    void editEmployeeList(Employee employee);
 }

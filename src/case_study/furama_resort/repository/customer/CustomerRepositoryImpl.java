@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepositoryImpl implements ICustomerRepository {
-    private static final String PATH_CUSTOMER = "src/case_study/furama_resort/common/furama.csv";
+    private static final String PATH_CUSTOMER = "src/case_study/furama_resort/data/customer.csv";
     static List<Customer> customers = new ArrayList<>();
 
     @Override
@@ -24,7 +24,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     }
 
     public int findId(String newId) {
-       int size=customers.size();
+        int size = customers.size();
         for (int i = 0; i < size; i++) {
             if (customers.get(i).getId().equals(newId)) {
                 return i;
@@ -34,8 +34,14 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     }
 
     @Override
-    public void editCustomerList() {
-        customers = ReadAndWriteToCustomer.read(PATH_CUSTOMER);
-        ReadAndWriteToCustomer.write1(customers,PATH_CUSTOMER);
+    public void editCustomerList(Customer customer) {
+        List<Customer> list = ReadAndWriteToCustomer.read(PATH_CUSTOMER);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId().equals(customer.getId())) {
+                list.set(i, customer);
+                ReadAndWriteToCustomer.write1(customers, PATH_CUSTOMER);
+                break;
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@ package case_study.furama_resort.service.customer;
 
 import case_study.furama_resort.model.person.Customer;
 import case_study.furama_resort.repository.customer.CustomerRepositoryImpl;
+import case_study.furama_resort.utils.customer.ValidateCustomer;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,30 +20,81 @@ public class CustomerService implements ICustomerService {
             }
         }
     }
+
     @Override
     public void add() {
-        System.out.println("nhập id của khách");
-        String id = sc.nextLine();
-        System.out.println("nhập tên của khách");
-        String name = sc.nextLine();
-        System.out.println("nhập ngày tháng năm sinh");
-        String dateOfBirth = sc.nextLine();
-        System.out.println("nhập giới tính: 1 là nam, 2 là nữ, giới tính khác nhập bất kì");
-        String male = sc.nextLine();
-        if (male.equals("1")) {
-            System.out.println("nam");
-        } else if (male.equals("2")) {
-            System.out.println("nữ");
-        } else {
-            System.out.println("giới tính khác");
-        }
-        System.out.print("nhập số căn cước");
-        String citizenIdentificationNumber = sc.nextLine();
-        System.out.print("nhập số điện thoại");
-        String phoneNumber = sc.nextLine();
-        System.out.print("nhập email");
+        String id;
+        do {
+            System.out.print("Enter id of Customer(ex:KH-XXXX): ");
+            id = sc.nextLine();
+            if (ValidateCustomer.checkIdCustomer(id)) {
+                System.out.println("add done.");
+                ;
+            } else {
+                System.err.println("Enter not same the format.");
+            }
+        } while (!ValidateCustomer.checkIdCustomer(id));
+        String name;
+        do {
+            System.out.print("Enter name of Customer(EX:Tuan Vu): ");
+            name = sc.nextLine();
+            if (ValidateCustomer.checkNameCustomer(name)) {
+                System.out.println("Added name of customer.");
+            } else {
+                System.err.println("Enter not same format, please.");
+            }
+        } while (!ValidateCustomer.checkNameCustomer(name));
+        String dateOfBirth;
+        do {
+            System.out.print("Enter dateOfBirth(dd-mm-yyyy): ");
+            dateOfBirth = sc.nextLine();
+            if (ValidateCustomer.checkDateOfBirth(dateOfBirth)) {
+                System.out.println("add done.");
+            } else {
+                System.err.println("Enter not same format, please enter again.");
+            }
+        } while (!ValidateCustomer.checkDateOfBirth(dateOfBirth));
+        System.out.println("Enter gender: 1 is male, 2 is female, 3 is another gender");
+        int gender;
+        boolean flag3 = true;
+        do {
+            gender = Integer.parseInt(sc.nextLine());
+            if (gender == 1) {
+                System.out.println("male.");
+                flag3 = false;
+            } else if (gender == 2) {
+                System.out.println("female.");
+                flag3 = false;
+            } else if (gender == 3) {
+                System.out.println("another gender.");
+                flag3 = false;
+            } else {
+                System.err.println("not found gender.");
+            }
+        } while (flag3);
+        String citizenIdentificationNumber;
+        do {
+            System.out.print("Enter citizenIdentificationNumber(ex:9 or 12 number) : ");
+            citizenIdentificationNumber = sc.nextLine();
+            if (ValidateCustomer.checkCitizenIdentificationNumber(citizenIdentificationNumber)) {
+                System.out.println("add done.");
+            } else {
+                System.err.println("Enter not same format, please enter again.");
+            }
+        } while (!ValidateCustomer.checkCitizenIdentificationNumber(citizenIdentificationNumber));
+        String phoneNumber;
+        do {
+            System.out.print("Enter phoneNumber (ex:0123456789): ");
+            phoneNumber = sc.nextLine();
+            if (ValidateCustomer.checkPhoneNumber(phoneNumber)) {
+                System.out.println("add done.");
+            } else {
+                System.err.println("enter not same format, please enter again.");
+            }
+        } while (!ValidateCustomer.checkPhoneNumber(phoneNumber));
+        System.out.print("Enter email: ");
         String email = sc.nextLine();
-        System.out.print("chọn level khách hàng");
+        System.out.print("Choice level of customer: ");
         String customerLevel = null;
         boolean flag = true;
         do {
@@ -51,75 +104,169 @@ public class CustomerService implements ICustomerService {
                     "3. Gold\n" +
                     "4. Sivel\n" +
                     "5. Member\n" +
-                    "Enter your choice ");
+                    "mời bạn chọn ");
             int customerLevel1 = Integer.parseInt(sc.nextLine());
             switch (customerLevel1) {
                 case 1:
-                    flag=false;
-                    customerLevel = "Diamond";
+                    flag = false;
+                    customerLevel = "Diamond.";
                     break;
                 case 2:
-                    flag=false;
-                    customerLevel = "Platinum";
+                    flag = false;
+                    customerLevel = "Platinum.";
                     break;
                 case 3:
-                    flag=false;
-                    customerLevel = "Gold";
+                    flag = false;
+                    customerLevel = "Gold.";
                     break;
                 case 4:
-                    flag=false;
-                    customerLevel = "Sivel";
+                    flag = false;
+                    customerLevel = "Sivel.";
                     break;
                 case 5:
-                    flag=false;
-                    customerLevel = "member";
+                    flag = false;
+                    customerLevel = "member.";
                     break;
                 default:
-                    System.out.println("chọn chưa đúng");
+                    System.err.println("not found level.");
 
             }
         } while (flag);
-        System.out.println("nhập địa chỉ khách hàng");
+        System.out.println("Enter address of customer: ");
         String address = sc.nextLine();
-        customerRepository.add(new Customer(id, name, dateOfBirth, male, citizenIdentificationNumber, phoneNumber, email, customerLevel, address));
+        customerRepository.add(new Customer(id, name, dateOfBirth, String.valueOf(gender), citizenIdentificationNumber, phoneNumber, email, customerLevel, address));
     }
 
     @Override
     public void editCustomerList() {
-        System.out.print("nhập id muốn sửa");
+        System.out.print("Enter id of Customer you want Edit");
         String editCustomer = sc.nextLine();
         int edit = customerRepository.findId(editCustomer);
-        if (edit>=0) {
-            System.out.print("nhập id mới của khách hàng");
-            String id = sc.nextLine();
-            customerRepository.getListCustomer().get(edit).setId(id);
-            System.out.print("nhập tên mới của khách");
-            String name = sc.nextLine();
-            customerRepository.getListCustomer().get(edit).setName(name);
-            System.out.print("nhập ngày tháng năm sinh");
-            String dateOfBirth = sc.nextLine();
-            customerRepository.getListCustomer().get(edit).setDateOfBirth(dateOfBirth);
-            System.out.print("nhập lại giới tính");
-            String gender = sc.nextLine();
-            customerRepository.getListCustomer().get(edit).setGender(gender);
-            System.out.print("nhập căn cước công dân hoặc passport");
-            String citizenIdentificationNumber = sc.nextLine();
-            customerRepository.getListCustomer().get(edit).setCitizenIdentificationNumber(citizenIdentificationNumber);
-            System.out.print("nhập số điện thoại");
-            String phoneNumber = sc.nextLine();
-            customerRepository.getListCustomer().get(edit).setPhoneNumber(phoneNumber);
-            System.out.print("nhập email");
-            String email = sc.nextLine();
-            customerRepository.getListCustomer().get(edit).setEmail(email);
-            System.out.print("nhập level của khách hàng");
-            String customerLevel = sc.nextLine();
-            customerRepository.getListCustomer().get(edit).setCustomerLevel(customerLevel);
-            System.out.print("nhập địa chỉ của khách hàng");
-            String address = sc.nextLine();
-            customerRepository.getListCustomer().get(edit).setAddress(address);
-            System.out.println("đã được thay đổi");
+        Customer customerEdit = customerRepository.getListCustomer().get(edit);
+        if (customerEdit == null) {
+            System.err.println("Id not found ");
         } else {
-            System.out.println("id bạn nhập chưa đúng");
+            String id;
+            do {
+                System.out.print("Edit new id(KH-XXXX): ");
+                id = sc.nextLine();
+                if (ValidateCustomer.checkIdCustomer(id)) {
+                    System.out.println("edit done.");
+                } else {
+                    System.err.println("Enter not same format, please enter again.");
+                }
+            } while (!ValidateCustomer.checkIdCustomer(id));
+            customerEdit.setId(id);
+            String name;
+            do {
+                System.out.print("Edit new CustomerName(ex:Tuan Vu): ");
+                name = sc.nextLine();
+                if (ValidateCustomer.checkNameCustomer(name)) {
+                    System.out.println("edit DONE.");
+                } else {
+                    System.err.println("Enter not same format, please enter again.");
+                }
+            } while (!ValidateCustomer.checkNameCustomer(name));
+            customerEdit.setName(name);
+            String dateOfBirth;
+            do {
+                System.out.print("Edit newDateOfBirth of Customer (ex:dd-mm-yyyy: ");
+                dateOfBirth = sc.nextLine();
+                if (ValidateCustomer.checkDateOfBirth(dateOfBirth)) {
+                    System.out.println("edit done.");
+                } else {
+                    System.err.println("edit not same format, please enter again.");
+                }
+            } while (!ValidateCustomer.checkDateOfBirth(dateOfBirth));
+            customerEdit.setDateOfBirth(dateOfBirth);
+            System.out.print("edit gender, input 1 for male, 2 for female, 3 for another gender.");
+            int gender;
+            boolean flag3 = true;
+            do {
+                gender = Integer.parseInt(sc.nextLine());
+                if (gender == 1) {
+                    System.out.println("male.");
+                    flag3 = false;
+                } else if (gender == 2) {
+                    System.out.println("female.");
+                    flag3 = false;
+                } else if (gender == 3) {
+                    System.out.println("another gender.");
+                    flag3 = false;
+                } else {
+                    System.err.println("not found.");
+                }
+            } while (flag3);
+            customerEdit.setGender(String.valueOf(gender));
+            String citizenIdentificationNumber;
+            do {
+                System.out.print("Edit newCitizenIdentificationNumber(input 9 or 12) : ");
+                citizenIdentificationNumber = sc.nextLine();
+                if (ValidateCustomer.checkCitizenIdentificationNumber(citizenIdentificationNumber)) {
+                    System.out.println("Edit done.");
+                } else {
+                    System.err.println("Edit not same format, please Edit again.");
+                }
+            } while (!ValidateCustomer.checkCitizenIdentificationNumber(citizenIdentificationNumber));
+            customerEdit.setCitizenIdentificationNumber(citizenIdentificationNumber);
+            String phoneNumber;
+            do {
+                System.out.print("Edit phoneNumber(ex:(0)123456789: ");
+                phoneNumber = sc.nextLine();
+                if (ValidateCustomer.checkPhoneNumber(phoneNumber)) {
+                    System.out.println("Edit Done.");
+                } else {
+                    System.err.println("Edit not same format, please enter again.");
+                }
+            } while (!ValidateCustomer.checkPhoneNumber(phoneNumber));
+            customerEdit.setPhoneNumber(phoneNumber);
+            System.out.print("Edit email: ");
+            String email = sc.nextLine();
+            customerEdit.setEmail(email);
+            System.out.print("choice level of Customer: ");
+            String customerLevel = null;
+            boolean flag = true;
+            do {
+                System.out.println("---Customer Level----\n" +
+                        "1. Diamond\n" +
+                        "2. Platinum\n" +
+                        "3. Gold\n" +
+                        "4. Sivel\n" +
+                        "5. Member\n" +
+                        "Enter your choice: ");
+                int customerLevel1 = Integer.parseInt(sc.nextLine());
+                switch (customerLevel1) {
+                    case 1:
+                        flag = false;
+                        customerLevel = "Diamond.";
+                        break;
+                    case 2:
+                        flag = false;
+                        customerLevel = "Platinum.";
+                        break;
+                    case 3:
+                        flag = false;
+                        customerLevel = "Gold.";
+                        break;
+                    case 4:
+                        flag = false;
+                        customerLevel = "Sivel.";
+                        break;
+                    case 5:
+                        flag = false;
+                        customerLevel = "member.";
+                        break;
+                    default:
+                        System.out.println("not found .");
+
+                }
+            } while (flag);
+            customerEdit.setCustomerLevel(customerLevel);
+            System.out.print("Edit address of Customer: ");
+            String address = sc.nextLine();
+            customerEdit.setAddress(address);
+            System.out.println("Edit Done.");
+            System.out.println("Congratulation!!!!");
         }
     }
 }

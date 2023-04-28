@@ -2,14 +2,11 @@ package case_study.furama_resort.service.booking;
 
 import case_study.furama_resort.model.Booking;
 import case_study.furama_resort.repository.booking.BookingRepositoryImpl;
-import case_study.furama_resort.service.IService;
-import com.sun.scenario.effect.impl.prism.PrImage;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BookingService implements IService {
+public class BookingService implements IBookingService {
     Scanner sc = new Scanner(System.in);
     private BookingRepositoryImpl bookingRepository = new BookingRepositoryImpl();
 

@@ -1,6 +1,6 @@
 package case_study.furama_resort.model.person;
 
-public class Customer extends Person{
+public class Customer extends Person {
     private String customerLevel;
     private String address;
 
@@ -31,15 +31,27 @@ public class Customer extends Person{
 
     @Override
     public String toString() {
-        return "Customer{" + super.toString()+
+        return "id='" + getId() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", dateOfBirth='" + getDateOfBirth() + '\'' +
+                ", male='" + getGender() + '\'' +
+                ", citizenIdentificationNumber='" + getCitizenIdentificationNumber() + '\'' +
+                ", phoneNumber='" + getPhoneNumber() + '\'' +
+                ", email='" + getEmail() + '\'' +
                 "customerLevel='" + customerLevel + '\'' +
                 ", address='" + address + '\'' +
                 '}';
     }
-    public String customerList(){
-        return "Customer{" + super.toString()+
-                "customerLevel='" + customerLevel + "," +
-                ", address='" + address + "," +
-                '}';
+
+    public String customerList() {
+        return getId() + "," +
+                getName() + "," +
+                getDateOfBirth() + "," +
+                getGender() + "," +
+                getCitizenIdentificationNumber() + "," +
+                getPhoneNumber() + "," +
+                getEmail() + "," +
+                customerLevel + "," +
+                address + ",";
     }
 }

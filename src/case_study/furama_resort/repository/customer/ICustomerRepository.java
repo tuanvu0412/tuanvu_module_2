@@ -9,5 +9,5 @@ public interface ICustomerRepository<E> {
 
     void add(Customer customer);
 
-    void editCustomerList();
+    void editCustomerList(Customer customer);
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookingRepositoryImpl implements IBookingRepository {
-    private static final String PATH_BOOKING="src/case_study/furama_resort/common/furama.csv";
+    private static final String PATH_BOOKING="src/case_study/furama_resort/data/booking.csv";
     static List<Booking> booking1 = new ArrayList<>();
 
     @Override

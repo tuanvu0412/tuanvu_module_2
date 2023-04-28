@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactRepositoryImpl implements IContactRepository {
-    private static final String PATH_CONTRACT = "src/case_study/furama_resort/common/furama.csv";
+    private static final String PATH_CONTRACT = "src/case_study/furama_resort/data/contract.csv";
     static List<Contract> contract = new ArrayList<>();
 
     @Override
