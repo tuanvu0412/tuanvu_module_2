@@ -10,14 +10,12 @@ import java.util.Scanner;
 public class EmployeeService implements IEmployeeService {
     Scanner sc = new Scanner(System.in);
     EmployeeRepositoryImpl employeeRepository = new EmployeeRepositoryImpl();
+    List<Employee> list = employeeRepository.getListEmployee();
 
 
     @Override
     public void displayEmployeeList() {
-        List<Employee> list = employeeRepository.getListEmployee();
         for (Employee e : list) {
-            System.out.println(e.getLevel());
-            System.out.println(e.getPosition());
             if (e.getLevel() != null || e.getPosition() != null) {
                 System.out.println(e + " ");
             }
@@ -26,16 +24,29 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void addNewEmployee() {
+        employeeRepository.getListEmployee();
         String id;
+        boolean flag;
         do {
             System.out.print("Enter ID of Employee (EX:NV-XXXX): ");
             id = sc.nextLine();
+            flag = true;
             if (ValidateEmployee.checkIdEmployee(id)) {
-                System.out.print("Added Employee ID.\n");
-            } else {
-                System.err.print("Enter the ID not same format.");
+                for (Employee employee : list) {
+                    if (employee.getId().equals(id)) {
+                        flag = false;
+                        continue;
+                    }
+                }
+                if (flag) {
+                    System.out.print("Added Employee ID.\n");
+                    break;
+                } else {
+                    System.err.print("id already exists");
+                    continue;
+                }
             }
-        } while (!ValidateEmployee.checkIdEmployee(id));
+        } while (!flag);
         String name;
         do {
             System.out.print("Enter name of Employee (EX: Tuan Vu): ");
@@ -62,23 +73,23 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (true);
         String gender;
-        boolean flag = true;
+        boolean flag5 = true;
         do {
             System.out.print("Enter gender: enter number 1: is male, enter number 2: is famale , enter number 3: different genger: ");
             gender = sc.nextLine();
             if (gender.equals("1")) {
                 System.out.print("male.\n");
-                flag = false;
+                flag5 = false;
             } else if (gender.equals("2")) {
                 System.out.print("female.\n");
-                flag = false;
+                flag5 = false;
             } else if (gender.equals("3")) {
                 System.out.print("different gender.\n");
-                flag = false;
+                flag5 = false;
             } else {
                 System.out.println("Enter not same format");
             }
-        } while (flag);
+        } while (flag5);
         String citizenIdentificationNumber;
         do {
             System.out.print("Enter CitizenIdentificationNumber or Passport(9 or 12 number): ");
@@ -110,28 +121,35 @@ public class EmployeeService implements IEmployeeService {
                     "2. College.\n" +
                     "3. University.\n" +
                     "4. After graduation.\n" +
-                    "5. Exit.\n" +
                     "Please choice Qualification: ");
-            int choice = Integer.parseInt(sc.nextLine());
-            switch (choice) {
-                case 1:
-                    flag1 = false;
-                    level = "Intermediate.";
-                    break;
-                case 2:
-                    flag1 = false;
-                    level = "College.";
-                    break;
-                case 3:
-                    flag1 = false;
-                    level = "University.";
-                    break;
-                case 4:
-                    flag1 = false;
-                    level = "After graduation.";
-                    break;
-                default:
-                    System.err.println("Not Found.");
+            String choice = sc.nextLine();
+            if (choice.equals("")) {
+                try {
+                    throw new Exception("Please, Choice a number form 1 to 4: ");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                switch (choice) {
+                    case "1":
+                        flag1 = false;
+                        level = "Intermediate.";
+                        break;
+                    case "2":
+                        flag1 = false;
+                        level = "College.";
+                        break;
+                    case "3":
+                        flag1 = false;
+                        level = "University.";
+                        break;
+                    case "4":
+                        flag1 = false;
+                        level = "After graduation.";
+                        break;
+                    default:
+                        System.err.println("Not Found.");
+                }
             }
         } while (flag1);
         System.out.print("Enter position of Employee: ");
@@ -144,40 +162,47 @@ public class EmployeeService implements IEmployeeService {
                     "3. Expert.\n" +
                     "4. Supervisor.\n" +
                     "5. Manager.\n" +
-                    "6. Director.\n" +
-                    "7. Exit menu.");
+                    "6. Director.\n");
             System.out.print("Please choice Position: ");
-            int choice = Integer.parseInt(sc.nextLine());
-            switch (choice) {
-                case 1:
-                    position = "Receptionist.";
-                    flag2 = false;
-                    break;
-                case 2:
-                    position = " Waitress.";
-                    flag2 = false;
-                    break;
-                case 3:
-                    position = " Expert.";
-                    flag2 = false;
-                    break;
-                case 4:
-                    position = "Supervisor.";
-                    flag2 = false;
-                    break;
-                case 5:
-                    position = "Manager.";
-                    flag2 = false;
-                    break;
-                case 6:
-                    position = "Director.";
-                    flag2 = false;
-                    break;
-                default:
-                    System.err.println("Not Found.");
+            String choice = sc.nextLine();
+            if (choice.equals("")) {
+                try {
+                    throw new Exception("Please, Choice a number form 1 to 6: ");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                switch (choice) {
+                    case "1":
+                        position = "Receptionist.";
+                        flag2 = false;
+                        break;
+                    case "2":
+                        position = " Waitress.";
+                        flag2 = false;
+                        break;
+                    case "3":
+                        position = " Expert.";
+                        flag2 = false;
+                        break;
+                    case "4":
+                        position = "Supervisor.";
+                        flag2 = false;
+                        break;
+                    case "5":
+                        position = "Manager.";
+                        flag2 = false;
+                        break;
+                    case "6":
+                        position = "Director.";
+                        flag2 = false;
+                        break;
+                    default:
+                        System.err.println("Not Found.");
+                }
             }
         } while (flag2);
-        int salary;
+        double salary;
         do {
             System.out.print("Enter salary of Employee: ");
             salary = Integer.parseInt(sc.nextLine());
@@ -191,7 +216,7 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void editEmployeeList() {
-        System.out.print("Enter ID you want to change : ");
+        System.out.print("Enter ID you want to change(NV-XXXX) : ");
         String editEmployee = sc.nextLine();
         int edit = employeeRepository.checkId(editEmployee);
         Employee employeeEdit = employeeRepository.getListEmployee().get(edit);
@@ -200,7 +225,7 @@ public class EmployeeService implements IEmployeeService {
         } else {
             String id;
             do {
-                System.out.print("Enter newID: ");
+                System.out.print("Enter newID(NV-XXXX): ");
                 id = sc.nextLine();
                 if (ValidateEmployee.checkIdEmployee(id)) {
                     System.out.println("Edit done.\n");
@@ -211,7 +236,7 @@ public class EmployeeService implements IEmployeeService {
             employeeEdit.setId(id);
             String name;
             do {
-                System.out.print("Enter newName: ");
+                System.out.print("Enter newName(A-z A-z...): ");
                 name = sc.nextLine();
                 if (ValidateEmployee.checkNameEmployee(name)) {
                     System.out.println("Edit done.\n");
@@ -222,7 +247,7 @@ public class EmployeeService implements IEmployeeService {
             employeeEdit.setName(name);
             String dateOfBirth;
             do {
-                System.out.print("Enter dateOfBirth: ");
+                System.out.print("Enter dateOfBirth(dd-mm-yy): ");
                 dateOfBirth = sc.nextLine();
                 if (!ValidateEmployee.checkDateOfBirth(dateOfBirth)) {
                     System.err.println("Enter not same format, please enter again");
@@ -235,7 +260,7 @@ public class EmployeeService implements IEmployeeService {
                     System.out.println("not enough 18yearsOld");
                     continue;
                 }
-            } while (0 == 0);
+            } while (true);
             employeeEdit.setDateOfBirth(dateOfBirth);
             System.out.print("Enter gender for employee, choice 1 is male, choice 2 is female, choice 3 is different gender");
             String gender;
@@ -259,7 +284,7 @@ public class EmployeeService implements IEmployeeService {
             employeeEdit.setGender(gender);
             String citizenIdentificationNumber;
             do {
-                System.out.print("Enter citizenIdentificationNumber of passport: ");
+                System.out.print("Enter citizenIdentificationNumber of passport(9 or 12 numbers): ");
                 citizenIdentificationNumber = sc.nextLine();
                 if (ValidateEmployee.checkCitizenIdentificationNumber(citizenIdentificationNumber)) {
                     System.out.println("edit done.\n");
@@ -270,7 +295,7 @@ public class EmployeeService implements IEmployeeService {
             employeeEdit.setCitizenIdentificationNumber(citizenIdentificationNumber);
             String phoneNumber;
             do {
-                System.out.print("Enter PhoneNumber: ");
+                System.out.print("Enter PhoneNumber((0)123456789): ");
                 phoneNumber = sc.nextLine();
                 if (ValidateEmployee.checkPhoneNumber(phoneNumber)) {
                     System.out.println("Edit done.\n");
@@ -294,26 +319,34 @@ public class EmployeeService implements IEmployeeService {
                         "4. After graduation\n" +
                         "5. Exit\n" +
                         "Please choice Position");
-                int choice = Integer.parseInt(sc.nextLine());
-                switch (choice) {
-                    case 1:
-                        flag1 = false;
-                        level = "Intermediate.";
-                        break;
-                    case 2:
-                        flag1 = false;
-                        level = "College.";
-                        break;
-                    case 3:
-                        flag1 = false;
-                        level = "University.";
-                        break;
-                    case 4:
-                        flag1 = false;
-                        level = "After graduation.";
-                        break;
-                    default:
-                        System.err.println("not found.");
+                String choice = sc.nextLine();
+                if (choice.equals("")) {
+                    try {
+                        throw new Exception("the string must not be empty, Please choice a number");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    switch (choice) {
+                        case "1":
+                            flag1 = false;
+                            level = "Intermediate.";
+                            break;
+                        case "2":
+                            flag1 = false;
+                            level = "College.";
+                            break;
+                        case "3":
+                            flag1 = false;
+                            level = "University.";
+                            break;
+                        case "4":
+                            flag1 = false;
+                            level = "After graduation.";
+                            break;
+                        default:
+                            System.err.println("not found.");
+                    }
                 }
             } while (flag1);
             employeeEdit.setLevel(level);
@@ -330,34 +363,42 @@ public class EmployeeService implements IEmployeeService {
                         "6. Director\n" +
                         "7. Exit menu");
                 System.out.println("Please choice newPosition: ");
-                int choice = Integer.parseInt(sc.nextLine());
-                switch (choice) {
-                    case 1:
-                        position = "Reception.";
-                        flag2 = false;
-                        break;
-                    case 2:
-                        position = " Waitress.";
-                        flag2 = false;
-                        break;
-                    case 3:
-                        position = "Expert.";
-                        flag2 = false;
-                        break;
-                    case 4:
-                        position = "Supervisor.";
-                        flag2 = false;
-                        break;
-                    case 5:
-                        position = "Manager.";
-                        flag2 = false;
-                        break;
-                    case 6:
-                        position = "Director.";
-                        flag2 = false;
-                        break;
-                    default:
-                        System.err.println("not found.");
+                String choice = sc.nextLine();
+                if (choice.equals("")) {
+                    try {
+                        throw new Exception("the string must not be empty, Please choice a number");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    switch (choice) {
+                        case "1":
+                            position = "Reception.";
+                            flag2 = false;
+                            break;
+                        case "2":
+                            position = " Waitress.";
+                            flag2 = false;
+                            break;
+                        case "3":
+                            position = "Expert.";
+                            flag2 = false;
+                            break;
+                        case "4":
+                            position = "Supervisor.";
+                            flag2 = false;
+                            break;
+                        case "5":
+                            position = "Manager.";
+                            flag2 = false;
+                            break;
+                        case "6":
+                            position = "Director.";
+                            flag2 = false;
+                            break;
+                        default:
+                            System.err.println("not found.");
+                    }
                 }
             } while (flag2);
             employeeEdit.setPosition(position);

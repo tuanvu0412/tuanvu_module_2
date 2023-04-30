@@ -12,7 +12,7 @@ public class ValidateCustomer {
     }
 
     public static boolean checkDateOfBirth(String customerDateOfBirth) {
-        String PATTERN_DATE_OF_BIRTH = "^([0-2]{1}\\d{1}-|[3]{1}[0-1]{1}-)([0]{1}\\d-|[1]\\d-|[2]\\d-)([2]{1}[0]{1}[0-1]\\d|[2]{1}[0]{1}[2]{1}[0-3]{1})";
+        String PATTERN_DATE_OF_BIRTH = "^([0-2]{1}\\d{1}-|[3]{1}[0-1]{1}-)([0]{1}\\d-|[1]\\d-|[2]\\d-)([1]\\d{3}|[2]{1}[0]{1}[0-1]\\d|[2]{1}[0]{1}[2]{1}[0-3]{1})";
         return customerDateOfBirth.matches(PATTERN_DATE_OF_BIRTH);
 
     }

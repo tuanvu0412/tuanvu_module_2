@@ -20,7 +20,6 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     public void add(Customer customer) {
         customers.add(customer);
         ReadAndWriteToCustomer.write1(customers, PATH_CUSTOMER);
-
     }
 
     public int findId(String newId) {
