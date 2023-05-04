@@ -34,10 +34,11 @@ public class FacilityService implements IFacilityService {
     @Override
     public void addVilla() {
         String idService;
-        boolean flag = true;
+        boolean flag ;
         do {
             System.out.println("nhập id dịch vụ(SVVL-XXXX)");
             idService = sc.nextLine();
+            flag= true;
             if (ValidateFacility.checkVillaId(idService)) {
                 for (Facility villa : list) {
                     if (villa.getIdService().equals(idService)) {
@@ -53,7 +54,7 @@ public class FacilityService implements IFacilityService {
                     continue;
                 }
             }
-        } while (!ValidateFacility.checkVillaId(idService));
+        } while (!flag);
         String nameService;
         do {
             System.out.println("nhập tên dịch vụ");
@@ -169,7 +170,7 @@ public class FacilityService implements IFacilityService {
                     continue;
                 }
             }
-        } while (!ValidateFacility.checkHouseId(idService));
+        } while (!flag);
         String nameService;
         do {
             System.out.println("nhập tên dịch vụ");
@@ -286,7 +287,7 @@ public class FacilityService implements IFacilityService {
                     continue;
                 }
             }
-        } while (!ValidateFacility.checkRoomId(idService));
+        } while (!flag);
         String nameService;
         do {
             System.out.println("nhập tên dịch vụ");

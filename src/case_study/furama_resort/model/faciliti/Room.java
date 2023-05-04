@@ -7,8 +7,8 @@ public class Room extends Facility {
 
     }
 
-    public Room(String idService, String nameService, String utilities, String taxExpense, String numberOfPerson, String rentalType,String price, String freeService) {
-        super(idService, nameService, utilities, taxExpense, numberOfPerson, rentalType,price);
+    public Room(String idService, String nameService, String utilities, String taxExpense, String numberOfPerson, String rentalType, String price, String freeService) {
+        super(idService, nameService, utilities, taxExpense, numberOfPerson, rentalType, price);
         this.freeService = freeService;
     }
 
@@ -22,19 +22,26 @@ public class Room extends Facility {
 
     @Override
     public String toString() {
-        return "Room{" + super.toString() +
+        return "Room{" +
+                "id" + getIdService() + "," +
+                "name" + getNameService() + "," +
+                "utilities" + getUtilities() + "," +
+                "taxExpense" + getTaxExpense() + "," +
+                "rentalType" + getRentalType() + "," +
+                "numberOfPerson" + getNumberOfPerson() + "," +
+                "price" + getPrice() + "," +
                 "freeService='" + freeService + '\'' +
                 '}';
     }
+
     public String writeToFile() {
-        return getIdService()+","+
-                getNameService()+","+
-                getUtilities()+","+
-                getTaxExpense()+","+
-                getTaxExpense()+","+
-                getNumberOfPerson()+","+
-                getRentalType()+""+
-                getPrice()+","+
+        return getIdService() + "," +
+                getNameService() + "," +
+                getUtilities() + "," +
+                getTaxExpense() + "," +
+                getNumberOfPerson() + "," +
+                getRentalType() + "" +
+                getPrice() + "," +
                 getFreeService();
     }
 }

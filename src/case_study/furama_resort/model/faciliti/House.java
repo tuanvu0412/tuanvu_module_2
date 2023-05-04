@@ -32,21 +32,28 @@ public class House extends Facility {
 
     @Override
     public String toString() {
-        return "House{" + super.toString() +
+        return "House{" +
+                "id" + getIdService() + "," +
+                "name" + getNameService() + "," +
+                "utilities" + getUtilities() + "," +
+                "taxExpense" + getTaxExpense() + "," +
+                "rentalType" + getRentalType() + "," +
+                "numberOfPerson" + getNumberOfPerson() + "," +
+                "price" + getPrice() + "," +
                 "roomStandard='" + roomStandard + '\'' +
                 ", numberOfFloors='" + numberOfFloors + '\'' +
                 '}';
     }
+
     public String writeToFile() {
-        return getIdService()+","+
-                getNameService()+","+
-                getUtilities()+","+
-                getTaxExpense()+","+
-                getTaxExpense()+","+
-                getNumberOfPerson()+","+
-                getRentalType()+""+
-                getPrice()+","+
-                getRoomStandard()+","+
+        return getIdService() + "," +
+                getNameService() + "," +
+                getUtilities() + "," +
+                getTaxExpense() + "," +
+                getNumberOfPerson() + "," +
+                getRentalType() + "" +
+                getPrice() + "," +
+                getRoomStandard() + "," +
                 getNumberOfFloors();
     }
 

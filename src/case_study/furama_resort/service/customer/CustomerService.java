@@ -43,7 +43,7 @@ public class CustomerService implements ICustomerService {
                     continue;
                 }
             }
-        } while (!ValidateCustomer.checkIdCustomer(id));
+        } while (!flag0);
         String name;
         do {
             System.out.print("Enter name of Customer(EX:Tuan Vu): ");
