@@ -10,10 +10,10 @@ import java.util.Scanner;
 public class CustomerService implements ICustomerService {
     Scanner sc = new Scanner(System.in);
     CustomerRepositoryImpl customerRepository = new CustomerRepositoryImpl();
+    List<Customer> list = customerRepository.getListCustomer();
 
     @Override
     public void displayCustomerList() {
-        List<Customer> list = customerRepository.getListCustomer();
         for (Customer c : list) {
             if (c.getCustomerLevel() != null) {
                 System.out.println(c + " ");
@@ -24,14 +24,24 @@ public class CustomerService implements ICustomerService {
     @Override
     public void add() {
         String id;
+        boolean flag0 = true;
         do {
             System.out.print("Enter id of Customer(ex:KH-XXXX): ");
             id = sc.nextLine();
             if (ValidateCustomer.checkIdCustomer(id)) {
-                System.out.println("add done.");
-                ;
-            } else {
-                System.err.println("Enter not same the format.");
+                for (Customer c : list) {
+                    if (c.getId().equals(id)) {
+                        flag0 = false;
+                        continue;
+                    }
+                }
+                if (flag0) {
+                    System.out.println("add done.");
+                    break;
+                } else {
+                    System.err.println("Enter not same the format.");
+                    continue;
+                }
             }
         } while (!ValidateCustomer.checkIdCustomer(id));
         String name;
@@ -135,6 +145,7 @@ public class CustomerService implements ICustomerService {
         System.out.println("Enter address of customer: ");
         String address = sc.nextLine();
         customerRepository.add(new Customer(id, name, dateOfBirth, String.valueOf(gender), citizenIdentificationNumber, phoneNumber, email, customerLevel, address));
+        System.out.println("Congratulation!!!!");
     }
 
     @Override
@@ -148,7 +159,7 @@ public class CustomerService implements ICustomerService {
         } else {
             String id;
             do {
-                System.out.print("Edit new id(KH-XXXX): ");
+                System.out.print("Enter again old ID(KH-XXXX): ");
                 id = sc.nextLine();
                 if (ValidateCustomer.checkIdCustomer(id)) {
                     System.out.println("edit done.");

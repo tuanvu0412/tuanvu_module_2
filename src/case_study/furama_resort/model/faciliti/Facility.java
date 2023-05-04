@@ -1,24 +1,26 @@
 package case_study.furama_resort.model.faciliti;
 
-public class Facility {
+public abstract class Facility {
     private String idService;
     private String nameService;
     private String utilities;
     private String taxExpense;
     private String numberOfPerson;
     private String rentalType;
+    private String price;
 
     public Facility() {
 
     }
 
-    public Facility(String idService, String nameService, String utilities, String taxExpense, String numberOfPerson, String rentalType) {
+    public Facility(String idService, String nameService, String utilities, String taxExpense, String numberOfPerson, String rentalType, String price) {
         this.idService = idService;
         this.nameService = nameService;
         this.utilities = utilities;
         this.taxExpense = taxExpense;
         this.numberOfPerson = numberOfPerson;
         this.rentalType = rentalType;
+        this.price = price;
     }
 
     public String getIdService() {
@@ -69,6 +71,13 @@ public class Facility {
         this.rentalType = rentalType;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     @Override
     public String toString() {
@@ -81,14 +90,12 @@ public class Facility {
                 ", rentalType='" + rentalType + '\'' +
                 '}';
     }
-    public  String facilityList(){
-        return "Facility{" +
-                "idService='" + idService + "," +
-                ", nameService='" + nameService + "," +
-                ", utilities='" + utilities + "," +
-                ", taxExpense='" + taxExpense + "," +
-                ", numberOfPerson='" + numberOfPerson + "," +
-                ", rentalType='" + rentalType + "," +
-                '}';
+
+    public String writeToFile() {
+        return idService + "," + nameService + "," +
+                utilities + "," +
+                taxExpense + "," +
+                numberOfPerson + "," +
+                rentalType+","+price;
     }
 }

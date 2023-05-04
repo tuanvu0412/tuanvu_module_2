@@ -46,7 +46,7 @@ public class EmployeeService implements IEmployeeService {
                     continue;
                 }
             }
-        } while (!flag);
+        } while (!ValidateEmployee.checkIdEmployee(id));
         String name;
         do {
             System.out.print("Enter name of Employee (EX: Tuan Vu): ");
@@ -212,6 +212,7 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (salary <= 0);
         employeeRepository.add(new Employee(id, name, dateOfBirth, gender, citizenIdentificationNumber, phoneNumber, email, level, position, String.valueOf(salary)));
+        System.out.println("Congratulation!!!!");
     }
 
     @Override
@@ -225,7 +226,7 @@ public class EmployeeService implements IEmployeeService {
         } else {
             String id;
             do {
-                System.out.print("Enter newID(NV-XXXX): ");
+                System.out.print("Enter again old ID(NV-XXXX): ");
                 id = sc.nextLine();
                 if (ValidateEmployee.checkIdEmployee(id)) {
                     System.out.println("Edit done.\n");
@@ -410,6 +411,7 @@ public class EmployeeService implements IEmployeeService {
             employeeEdit.setSalary(String.valueOf(salary));
             System.out.print("Edit done.\n");
             employeeRepository.editEmployeeList(employeeEdit);
+            System.out.println("Congratulation!!!!");
         }
     }
 }

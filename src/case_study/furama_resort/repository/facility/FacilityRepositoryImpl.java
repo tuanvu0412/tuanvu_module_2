@@ -2,24 +2,59 @@ package case_study.furama_resort.repository.facility;
 
 import case_study.furama_resort.model.faciliti.Facility;
 
-import case_study.furama_resort.utils.facility.ReadAndWrite4;
+import case_study.furama_resort.model.faciliti.House;
+import case_study.furama_resort.model.faciliti.Room;
+import case_study.furama_resort.model.faciliti.Villa;
+import case_study.furama_resort.utils.facility.ReadAndWriteFacility;
 
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 public class FacilityRepositoryImpl implements IFacilityRepository {
-    private static final String PATH_FACILITY="src/case_study/furama_resort/common/facility.csv";
-    static List<Facility> product = new ArrayList<>();
+    static final String PATH_FACILITY = "src/case_study/furama_resort/data/facility.csv";
+    static LinkedHashMap<Facility, Integer> list = new LinkedHashMap<>();
+    static ReadAndWriteFacility readAndWriteFacility = new ReadAndWriteFacility();
 
-    @Override
-    public List<Facility> getListFacility() {
-        product= ReadAndWrite4.Read(PATH_FACILITY);
-        return product;
+    static {
+        for (Facility facility : readAndWriteFacility.read(PATH_FACILITY)) {
+            list.put(facility, 1);
+        }
+    }
+    public List<Facility> getListFacility(){
+        List<Facility>list=ReadAndWriteFacility.read(PATH_FACILITY);
+        return list;
     }
 
     @Override
-    public void add(Facility facility) {
-        product.add(facility);
-        ReadAndWrite4.Write1(product,PATH_FACILITY);
+    public Set<Facility> setListFacility() {
+        Set<Facility> facilities = list.keySet();
+        for (Facility facility : facilities) {
+            if (list.get(facility) != 5) {
+                facilities.remove(facility);
+            }
+        }
+        return facilities;
+    }
+
+    @Override
+    public void addVilla(Villa villa) {
+        List<Facility> list = ReadAndWriteFacility.read(PATH_FACILITY);
+        list.add(villa);
+        ReadAndWriteFacility.write(list,PATH_FACILITY);
+    }
+
+    @Override
+    public void addHouse(House house) {
+        List<Facility> list = ReadAndWriteFacility.read(PATH_FACILITY);
+        list.add(house);
+        ReadAndWriteFacility.write(list,PATH_FACILITY);
+    }
+
+    @Override
+    public void addRoom(Room room) {
+        List<Facility> list = ReadAndWriteFacility.read(PATH_FACILITY);
+        list.add((room));
+        ReadAndWriteFacility.write(list,PATH_FACILITY);
     }
 }

@@ -7,8 +7,8 @@ public class Room extends Facility {
 
     }
 
-    public Room(String idService, String nameService, String utilities, String taxExpense, String numberOfPerson, String rentalType, String freeService) {
-        super(idService, nameService, utilities, taxExpense, numberOfPerson, rentalType);
+    public Room(String idService, String nameService, String utilities, String taxExpense, String numberOfPerson, String rentalType,String price, String freeService) {
+        super(idService, nameService, utilities, taxExpense, numberOfPerson, rentalType,price);
         this.freeService = freeService;
     }
 
@@ -25,5 +25,16 @@ public class Room extends Facility {
         return "Room{" + super.toString() +
                 "freeService='" + freeService + '\'' +
                 '}';
+    }
+    public String writeToFile() {
+        return getIdService()+","+
+                getNameService()+","+
+                getUtilities()+","+
+                getTaxExpense()+","+
+                getTaxExpense()+","+
+                getNumberOfPerson()+","+
+                getRentalType()+""+
+                getPrice()+","+
+                getFreeService();
     }
 }

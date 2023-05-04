@@ -8,7 +8,6 @@ import java.util.List;
 public class EmployeeRepositoryImpl implements IEmployeeRepository {
     private static final String PATH_EMPLOYEE = "src/case_study/furama_resort/data/employee.csv";
     static List<Employee> employees = ReadAndWriteToEmployee.read(PATH_EMPLOYEE);
-    ;
 
     @Override
     public List<Employee> getListEmployee() {
