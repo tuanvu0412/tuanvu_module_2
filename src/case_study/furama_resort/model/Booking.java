@@ -1,22 +1,22 @@
 package case_study.furama_resort.model;
 
-public class Booking {
+public class Booking implements Comparable<Booking> {
     private String idBooking;
     private String date;
-    private String startDate;
-    private String endDate;
+    private String dateStart;
+    private String dateEnd;
     private String idCustomer;
     private String idService;
 
-    public Booking(String date, String startDate, String endDate, String idCustomer, String idService) {
+    public Booking() {
 
     }
 
     public Booking(String idBooking, String date, String startDate, String endDate, String idCustomer, String idService) {
         this.idBooking = idBooking;
         this.date = date;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.dateStart = startDate;
+        this.dateEnd = endDate;
         this.idCustomer = idCustomer;
         this.idService = idService;
     }
@@ -37,20 +37,20 @@ public class Booking {
         this.date = date;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getDateStart() {
+        return dateStart;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setDateStart(String dateStart) {
+        this.dateStart = dateStart;
     }
 
     public String getEndDate() {
-        return endDate;
+        return dateEnd;
     }
 
     public void setEndDate(String endDate) {
-        this.endDate = endDate;
+        this.dateEnd = endDate;
     }
 
     public String getIdCustomer() {
@@ -72,23 +72,29 @@ public class Booking {
     @Override
     public String toString() {
         return "Booking{" +
-                "idBooking='" + idBooking + '\'' +
-                ", date='" + date + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                ", idCustomer='" + idCustomer + '\'' +
-                ", idService='" + idService + '\'' +
+                "idBooking= " + idBooking + '\'' +
+                " date= " + date + '\'' +
+                " startDate= " + dateStart + '\'' +
+                " endDate= " + dateEnd + '\'' +
+                " idCustomer= " + idCustomer + '\'' +
+                " idService= " + idService + '\'' +
                 '}';
     }
 
-    public String bookingList() {
-        return "Booking{" +
-                "idBooking='" + idBooking + "," +
-                ", date='" + date + "," +
-                ", startDate='" + startDate + "," +
-                ", endDate='" + endDate + "," +
-                ", idCustomer='" + idCustomer + "," +
-                ", idService='" + idService + "," +
-                '}';
+    public String writeToFile() {
+        return idBooking + "," +
+                date + "," +
+                dateStart + "," +
+                dateEnd + "," +
+                idCustomer + "," +
+                idService;
+    }
+
+    @Override
+    public int compareTo(Booking o) {
+        if(this.dateStart.equals(o.dateStart)){
+            return this.dateEnd.compareTo(o.dateEnd);
+        }
+        return this.dateStart.compareTo(o.dateStart);
     }
 }

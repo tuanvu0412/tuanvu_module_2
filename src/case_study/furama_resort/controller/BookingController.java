@@ -20,24 +20,34 @@ public class BookingController {
                     "5. Edit contracts\n" +
                     "6. Return main menu");
             System.out.println("mời bạn chọn");
-            String choice4 = sc.nextLine();
+            int choice4 = 0;
+            try {
+                choice4 = Integer.parseInt(sc.nextLine());
+                if (choice4 < 1 || choice4 > 6){
+                    throw new Exception("chỉ được nhập từ 1 tới 6");
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("Nhập không đúng định dạng!!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             switch (choice4) {
-                case "1":
+                case 1:
                     bookingService.add();
                     break;
-                case "2":
+                case 2:
                     bookingService.display();
                     break;
-                case "3":
+                case 3:
                     contactService.add();
                     break;
-                case "4":
+                case 4:
                     contactService.displayContact();
                     break;
-                case "5":
+                case 5:
                     contactService.editContact();
                     break;
-                case "6":
+                case 6:
                     flag = false;
                     System.out.println("đã thoát");
                     break;

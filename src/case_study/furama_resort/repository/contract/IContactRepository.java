@@ -9,5 +9,5 @@ public interface IContactRepository {
 
     void add(Contract contact);
 
-    void editContact();
+    void editContact(Contract contract);
 }

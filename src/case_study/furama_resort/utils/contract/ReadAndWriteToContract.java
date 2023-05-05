@@ -46,7 +46,7 @@ public class ReadAndWriteToContract {
             fileWriter = new FileWriter(file);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Contract c : contactList) {
-                bufferedWriter.write(c.contracList());
+                bufferedWriter.write(c.writeToFile());
                 bufferedWriter.newLine();
             }
             bufferedWriter.flush();

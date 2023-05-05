@@ -45,7 +45,6 @@ public class Villa extends Facility {
                 getNumberOfPerson() + "," +
                 getRentalType() + "," +
                 getPrice() + "," +
-                getSwimmingPoolArea() + "," +
-                '}';
+                getSwimmingPoolArea();
     }
 }

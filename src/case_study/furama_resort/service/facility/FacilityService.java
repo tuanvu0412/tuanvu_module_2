@@ -34,11 +34,11 @@ public class FacilityService implements IFacilityService {
     @Override
     public void addVilla() {
         String idService;
-        boolean flag ;
+        boolean flag;
         do {
             System.out.println("nhập id dịch vụ(SVVL-XXXX)");
             idService = sc.nextLine();
-            flag= true;
+            flag = true;
             if (ValidateFacility.checkVillaId(idService)) {
                 for (Facility villa : list) {
                     if (villa.getIdService().equals(idService)) {
@@ -108,15 +108,15 @@ public class FacilityService implements IFacilityService {
             rentalType = sc.nextLine();
             switch (rentalType) {
                 case "1":
-                    System.out.println("Villa 2 phòng");
+                    rentalType = "Villa 2 phòng";
                     flag2 = false;
                     break;
                 case "2":
-                    System.out.println("Villa 4 phòng");
+                    rentalType = "Villa 4 phòng";
                     flag2 = false;
                     break;
                 case "3":
-                    System.out.println("Villa 6 phòng");
+                    rentalType = "Villa 6 phòng";
                     flag2 = false;
                     break;
                 default:
@@ -224,15 +224,15 @@ public class FacilityService implements IFacilityService {
             rentalType = sc.nextLine();
             switch (rentalType) {
                 case "1":
-                    System.out.println("Nhà 1 phòng");
+                    rentalType = "Nhà 1 phòng";
                     flag2 = false;
                     break;
                 case "2":
-                    System.out.println("Nhà 2 phòng");
+                    rentalType = "nhà 2 phòng";
                     flag2 = false;
                     break;
                 case "3":
-                    System.out.println("Nhà 4 phòng");
+                    rentalType = "nhà 4 phòng";
                     flag2 = false;
                     break;
                 default:
@@ -341,15 +341,15 @@ public class FacilityService implements IFacilityService {
             rentalType = sc.nextLine();
             switch (rentalType) {
                 case "1":
-                    System.out.println("Phòng King");
+                    rentalType = "Phòng King";
                     flag2 = false;
                     break;
                 case "2":
-                    System.out.println("Phòng Queen ");
+                    rentalType = "Phòng queen";
                     flag2 = false;
                     break;
                 case "3":
-                    System.out.println("Phòng double");
+                    rentalType = "Phòng double";
                     flag2 = false;
                     break;
                 default:

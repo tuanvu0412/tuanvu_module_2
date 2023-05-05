@@ -1,18 +1,18 @@
 package case_study.furama_resort.utils.booking;
 
 import case_study.furama_resort.model.Booking;
-import ss11_map_tree.bai_tap.quan_ly_san_pham.model.Computer;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class ReadAndWriteToBooking {
-    public static List<Booking> read(String PATH) {
+    public static TreeSet<Booking> read(String PATH) {
         File file = new File(PATH);
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
-        List<Booking> list = new ArrayList<>();
+        TreeSet<Booking> list = new TreeSet<>();
         try {
             fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
@@ -39,7 +39,7 @@ public class ReadAndWriteToBooking {
         return list;
     }
 
-    public static void write1(List<Booking> bookingList, String filePath) {
+    public static void write1(TreeSet<Booking> bookingList, String filePath) {
         File file = new File(filePath);
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
@@ -47,7 +47,7 @@ public class ReadAndWriteToBooking {
             fileWriter = new FileWriter(file);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Booking c : bookingList) {
-                bufferedWriter.write(c.bookingList());
+                bufferedWriter.write(c.writeToFile());
                 bufferedWriter.newLine();
             }
             bufferedWriter.flush();

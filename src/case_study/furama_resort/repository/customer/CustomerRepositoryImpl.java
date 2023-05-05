@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CustomerRepositoryImpl implements ICustomerRepository {
     private static final String PATH_CUSTOMER = "src/case_study/furama_resort/data/customer.csv";
-    static List<Customer> customers = new ArrayList<>();
+    List<Customer> customers = ReadAndWriteToCustomer.read(PATH_CUSTOMER);
 
     @Override
     public List<Customer> getListCustomer() {

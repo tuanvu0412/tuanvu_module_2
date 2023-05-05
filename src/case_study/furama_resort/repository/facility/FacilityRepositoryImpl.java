@@ -25,7 +25,15 @@ public class FacilityRepositoryImpl implements IFacilityRepository {
         List<Facility>list=ReadAndWriteFacility.read(PATH_FACILITY);
         return list;
     }
-
+    public int finId(String id){
+      List<Facility>list=ReadAndWriteFacility.read(PATH_FACILITY);
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i).getIdService().equals(id)){
+                return  i;
+            }
+        }
+        return -1;
+    }
     @Override
     public Set<Facility> setListFacility() {
         Set<Facility> facilities = list.keySet();

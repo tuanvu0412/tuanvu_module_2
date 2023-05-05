@@ -6,7 +6,7 @@ public class Contract {
     private String depositInAdvance;
     private String totalPaymentAmount;
 
-    public Contract(){
+    public Contract() {
 
     }
 
@@ -58,12 +58,12 @@ public class Contract {
                 ", totalPaymentAmount='" + totalPaymentAmount + '\'' +
                 '}';
     }
-    public String contracList(){
-        return "Contract{" +
-                "contractNumber='" + contractNumber + "," +
-                ", idBooking='" + idBooking + "," +
-                ", depositInAdvance='" + depositInAdvance + "," +
-                ", totalPaymentAmount='" + totalPaymentAmount + "," +
-                '}';
+
+    public String writeToFile() {
+        return getContractNumber() + "," +
+                getIdBooking() + "," +
+                getDepositInAdvance() + "," +
+                getTotalPaymentAmount();
+
     }
 }
